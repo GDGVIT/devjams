@@ -322,8 +322,8 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
         )
     );
   }
-  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
-  List<String> time=["7:00","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
+  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
+  List<String> time=["7:00","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
 
   List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
   Widget DayOne(){
