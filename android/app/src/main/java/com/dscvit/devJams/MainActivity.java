@@ -1,4 +1,4 @@
-package com.example.vit_hack;
+package com.dscvit.devjams;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
