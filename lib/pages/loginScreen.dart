@@ -66,7 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
         Container(
           height: MediaQuery.of(context).size.height/4,
           width: MediaQuery.of(context).size.width,
-          child: new Padding(padding: const EdgeInsets.all(16.0),child: new Center(child:Container(
+          child: new Padding(padding: const EdgeInsets.all(16.0),child: new Center(
+            child:Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
@@ -91,11 +92,26 @@ class _LoginScreenState extends State<LoginScreen> {
         color:white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-          Container(
+          /*Container(
           width: 500,
           child:
-            Image.asset('lib/assests/DevJamsLogo.png')),
+           // Image.asset('lib/assests/DevJamsLogo.png')),*/
+           Container(
+              child:Text.rich( TextSpan(
+                children: <TextSpan>[
+                  TextSpan(text: 'D', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red,fontSize: 36)),
+                  TextSpan(text: 'e', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue,fontSize: 36)),
+                  TextSpan(text: 'v', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.yellow[600],fontSize: 36)),
+                  TextSpan(text: 'J', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.green,fontSize: 36)),
+                  TextSpan(text: 'a', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue,fontSize: 36)),
+                  TextSpan(text: 'm', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red,fontSize: 36)),
+                  TextSpan(text: 's', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.yellow[600],fontSize: 36)),
+                  TextSpan(text: "'", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue,fontSize: 36)),
+                  TextSpan(text: '19', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue,fontSize: 36)),
+                ],
+              )),),
             Padding(padding: EdgeInsets.all(8),),
 Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
             Padding(padding: EdgeInsets.all(8),),
