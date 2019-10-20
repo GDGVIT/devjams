@@ -1,4 +1,4 @@
-# vit_hack
+# DevJams
 
 A new Flutter project.
 

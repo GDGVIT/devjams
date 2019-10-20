@@ -73,9 +73,61 @@ flutter:
 
     - lib/assests/DSCVITLogo.png
     - lib/assests/dev.webp
+    - lib/assests/one.png
+    - lib/assests/two.png
+    - lib/assests/three.jpg
+    - lib/assests/four.jpg
+    - lib/assests/five.png
+    - lib/assests/six.JPG
+    - lib/assests/seven.jpeg
+    - lib/assests/eight.jpg
+    - lib/assests/nine.JPG
+    - lib/assests/ten.png
 
-
-
+    - lib/assests/Abhi.jpg
+    - lib/assests/Abhishek.jpg
+    - lib/assests/Aditya.jpg
+    - lib/assests/Akshat.jpeg
+    - lib/assests/Amogh.jpg
+    - lib/assests/Ananya.jpg
+    - lib/assests/Angad.jpeg
+    - lib/assests/Apoorva.jpg
+    - lib/assests/Arjun.jpeg
+    - lib/assests/eight.jpg
+    - lib/assests/Ayush.jpg
+    - lib/assests/Cyril.jpg
+    - lib/assests/DeepakM.jpeg
+    - lib/assests/DeepakT.jpg
+    - lib/assests/Dhiraj.jpeg
+    - lib/assests/Dhruv.jpg
+    - lib/assests/Ekaansh.jpeg
+    - lib/assests/Hardik.JPEG
+    - lib/assests/Kritika.JPG
+    - lib/assests/Manorama.jpg
+    - lib/assests/Meher.JPG
+    - lib/assests/Muskan.jpg
+    - lib/assests/Naynika.jpeg
+    - lib/assests/Nikhil.jpeg
+    - lib/assests/Paritosh.jpg
+    - lib/assests/Prateek.png
+    - lib/assests/preethi.JPG
+    - lib/assests/Purushottam.jpeg
+    - lib/assests/Riddhi.JPG
+    - lib/assests/Riya.jpg
+    - lib/assests/Ruchika.jpeg
+    - lib/assests/Saloni.jpg
+    - lib/assests/Samarth.jpg
+    - lib/assests/Samyak.jpg
+    - lib/assests/Sanchi.jpeg
+    - lib/assests/Satkriti.jpg
+    - lib/assests/Shravani.jpg
+    - lib/assests/Shreya.jpeg
+    - lib/assests/Shubham.jpg
+    - lib/assests/Ubaid.jpg
+    - lib/assests/Vikrame.jpg
+    - lib/assests/Vishaal.jpg
+    - lib/assests/Vivek.jpg
+    - lib/assests/Yaswant.JPG
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

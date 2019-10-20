@@ -281,12 +281,10 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
                     ];
                   },
                   body:SingleChildScrollView(
-
                     child:  Container(
-                        height: double.parse((data.length*120+100).toString()),
+                        height: MediaQuery.of(context).size.height,
                         color: background,
                         child: new TabBarView(
-
                           children: <Widget>[
                             DayOne(),
                             DayTwo(),
@@ -300,109 +298,161 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     );
   }
 
+List<String> name = ["Samarth Nayyar","Ayush Priya","Samyak Jain","Dhiraj Jain","Abhishek Kaushik","Apurva Nitanjay", "Preethi G", "Yaswant Narayan","Paritosh Mahajan","Vikrame Vasudev", "Angad Sharma", "Ubaid Usmani", "Prateek Mewara","Satkriti Singh", "Amogh Lele", "Nikhil Singh", "Purushottam Sharma","Ananya Ganesh","Riddhi Gupta","Abhishek Kushwaha","Vishaal Selvaraj","Deepak Malpani","Meherdeep Thakur", "Hardik Kataria","Deepak Nahar","Sanchi Chopra","Dhruv Mittal","Vivek Shetty","Akshat Gupta","Shubham Srivastava","Muskan Rastogi","Kritika Sharma","Naynika Wason","Shreya Maheshwari","Saloni Parekh","Manorama Maharana","Arjun Bhanot","Cyril Peter","Ekaansh Arora", "Riya Kanabar","Ruchica Sinha","Adity Rathore","Shravani Shete"];
+List<String> des = ["Community Lead","Technical Lead", "Technical Lead","Technical Advisor","Android Lead","Projects Lead","PR Lead", "Android","ML", "Web","Backend","ML","Android","Android","Android","Web","Web","Web"," Backend","Backend","Algorithms","ML","Manager","Manager", "Content","Content","Manager","Manager","Manager","Manager","Manager","Manager","Content","Content","Content","Manager","Manager","Manager","UI/UX","Graphic","Graphic","3D & Motion","Graphic"];
+List<String> field = ["", "","","","","","","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management", "Design","Design", "Design", "Design", "Design"];
+List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/assests/Samyak.jpg","lib/assests/Dhiraj.jpeg","lib/assests/Abhishek.jpg","lib/assests/Apoorva.jpg","lib/assests/preethi.JPG"
+,"lib/assests/Yaswant.JPG","lib/assests/Paritosh.jpg","lib/assests/Vikrame.jpg","lib/assests/Angad.jpeg","lib/assests/Ubaid.jpg","lib/assests/Prateek.png","lib/assests/Satkriti.jpg","lib/assests/Amogh.jpg","lib/assests/Nikhil.jpeg","lib/assests/Purushottam.jpeg","lib/assests/Ananya.jpg","lib/assests/Riddhi.JPG","lib/assests/Abhi.jpg","lib/assests/Vishaal.jpg","lib/assests/DeepakT.jpg","lib/assests/Cyril.jpg"
+,"lib/assests/Meher.JPG","lib/assests/Hardik.JPEG","lib/assests/DeepakM.jpeg","lib/assests/Sanchi.jpeg","lib/assests/Dhruv.jpg","lib/assests/Vivek.jpg","lib/assests/Akshat.jpeg","lib/assests/Shubham.jpg","lib/assests/Muskan.jpg","lib/assests/Kritika.JPG","lib/assests/Naynika.jpeg","lib/assests/Shreya.jpeg","lib/assests/Saloni.jpg","lib/assests/Manorama.jpg","lib/assests/Arjun.jpeg"
+,"lib/assests/Ekaansh.jpeg","lib/assests/Riya.jpg","lib/assests/Ruchika.jpeg","lib/assests/Aditya.jpg","lib/assests/Shravani.jpg"];
+
   Widget DayTwo(){
     return Scaffold(
-        body:Container(
-        width: MediaQuery.of(context).size.width,
-    child: ListView.builder(
-    itemCount: 10,
-    itemBuilder: (BuildContext ctxt, int index) {
-    return Container(
-    height: 200,
-    width: MediaQuery.of(context).size.width-32,
-    margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
-    decoration: BoxDecoration(
-    boxShadow:<BoxShadow>[
-    BoxShadow(blurRadius: 2.0,
-    color:Colors.grey[400] ,
-    offset: Offset(0.5,0.5))
+//<<<<<<< HEAD
+//        body:Container(
+//        width: MediaQuery.of(context).size.width,
+//    child: ListView.builder(
+//    itemCount: 10,
+//    itemBuilder: (BuildContext ctxt, int index) {
+//    return Container(
+//    height: 200,
+//    width: MediaQuery.of(context).size.width-32,
+//    margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
+//    decoration: BoxDecoration(
+//    boxShadow:<BoxShadow>[
+//    BoxShadow(blurRadius: 2.0,
+//    color:Colors.grey[400] ,
+//    offset: Offset(0.5,0.5))
+//
+//    ],
+//    shape: BoxShape.rectangle,
+//    color: Colors.white ,
+//    borderRadius: BorderRadius.all(Radius.circular(5))),
+//    child:Container(
+//    child: Column(
+//    children: <Widget>[
+//=======
+        body: SingleChildScrollView( 
+          child : Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height-200,
+      child: ListView.builder(
+          itemCount: img.length,
+          itemBuilder: (BuildContext ctxt, int index) {
+      return Container(
+        height: 280,
+            width: MediaQuery.of(context).size.width-32,
+            margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
+            decoration: BoxDecoration(
+            boxShadow:<BoxShadow>[
+            BoxShadow(blurRadius: 2.0,
+            color:Colors.grey[400] ,
+            offset: Offset(0.5,0.5))
 
-    ],
-    shape: BoxShape.rectangle,
-    color: Colors.white ,
-    borderRadius: BorderRadius.all(Radius.circular(5))),
-    child:Container(
-    child: Column(
-    children: <Widget>[
+            ],
+            shape: BoxShape.rectangle,
+            color: Colors.white ,
+            borderRadius: BorderRadius.all(Radius.circular(5))),
+          child:Container(
+child: Column(
+  children: <Widget>[
+//>>>>>>> 18db13cbfccb2e0e10d470a17c5d62417ff2e6a2
     Row(
-    children: <Widget>[
-    Container(
-    margin: EdgeInsets.all(16),
-    height: 100,
-    width: 100,
-    color: Colors.black,
-    child: Image.network("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg")
-    ),
-    Container(
-
-    child:Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment:MainAxisAlignment.start,
       children: <Widget>[
-      Container(
-        margin: EdgeInsets.only(left: 16,top: 16),
-        alignment: Alignment(-1,0),
-        child: Text("Nikita Gandhi",style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 16,top: 16),
-        alignment: Alignment(-1,0),
-        child: Text("@twitter",style: TextStyle(color: Colors.blue),),
-      ),
-
-
-    ],)
-
-
-    )
-    ],
+        Container(
+          margin: EdgeInsets.all(16),
+          height: 90,
+          width: 90,
+         color: Colors.black,
+         child: Image.asset(img[index])
+        ),
+        /*ClipPath(
+          clipper: BottomWaveClipper(),
+          child: Container(
+            height: 60,
+            width: (MediaQuery.of(context).size.width/5)*2,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+              color:Colors.red,
+            ),
+          child:  Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text("Gallery 1",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+              Text("1 pm to 2 pm",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+            ],
+          ),
+          ))*/
+      ],
     ),
-
-
+    /*Container(
+      margin: EdgeInsets.only(left: 16),
+      alignment: Alignment(-1,0),
+      child: Text("@twitter",style: TextStyle(color: Colors.blue),),
+    ),*/
     Container(
-    margin: EdgeInsets.only(left: 16,top: 16,right: 16),
-    child:
-    Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-    Row(
-    children: <Widget>[
+      margin: EdgeInsets.only(left: 16,top: 16),
+      alignment: Alignment(-1,0),
+      child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
+    ),
     Container(
+      margin: EdgeInsets.only(left: 16,top: 16),
+      alignment: Alignment(-1,0),
+      child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
+    ),
+    Container(
+        margin: EdgeInsets.only(left: 16,top: 16,right: 16),
+        child:
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Container(
 
-    height:15,
-    width: 15,
+              height:15,
+              width: 15,
 //                              height: 20,
 //                    width: (MediaQuery.of(context).size.width/10),
-    decoration: BoxDecoration(
-    shape:BoxShape.circle,
-    color:Colors.red,
-    ),
-    child: Text(" "),),
-    Padding(padding: EdgeInsets.only(left: 3),),
-    Text("Technical",style: TextStyle(color: Colors.red))
-    ],
-    ),
+              decoration: BoxDecoration(
+                shape:BoxShape.circle,
+                color:getColor(field[index]),
+              ),
+              child: Text(" "),),
+            Padding(padding: EdgeInsets.only(left: 3),),
+            Text(field[index],style: TextStyle(color: getColor(field[index])))
+          ],
+        ),
 
-    Container(
-      width: 60,
-    child: Image.asset("lib/assests/DSCVITLogo.png"),
-    )
+//<<<<<<< HEAD
+//    Container(
+//      width: 60,
+//    child: Image.asset("lib/assests/DSCVITLogo.png"),
+//    )
+//=======
+//        Container(
+//          child: Text("DSC VIT"),
+//        )
+//>>>>>>> 18db13cbfccb2e0e10d470a17c5d62417ff2e6a2
 
-    ],
+      ],
     ))
-    ],
-    ),
-    )
-    ) ;
-    }
-    )));
+  ],
+),
+      )
+      ) ;
   }
-  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
-  List<String> time=["7:00","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
+))));
+  }
+  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
+  List<String> time=["7:00","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
 
   List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
   Widget DayOne(){
-    return Scaffold(body:Container(
+    return Scaffold(
+      body:
+    Container(
     child:Column(
       children: <Widget>[
 
@@ -460,6 +510,20 @@ Container(
     );
   }
 
+  Color getColor(String s){
+    if(s==""){
+      return Colors.white;
+    }
+    else if(s=="Design"){
+      return Colors.red;
+    }
+    else if(s=="Management"){
+      return Colors.green;
+    }
+    else if(s=="Technical"){
+      return Colors.yellow;
+    }
+  }
 
 }
 
@@ -480,3 +544,4 @@ class BottomWaveClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
+
