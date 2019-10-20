@@ -375,6 +375,19 @@ List<String> emailList;
               backgroundColor: Colors.grey[700],
               textColor: Colors.white);
           }
+          else if(data["message"]=="User does not exist"){
+            setState(() {
+              _load=false;
+            });
+            s.setLogincheck('false');
+           Fluttertoast.showToast(
+              msg: "User does not exist",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+          }
           else{
 //            logincl=Logincl.fromJson(data);
 //            emailList=logincl.teamMates;

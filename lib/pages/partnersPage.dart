@@ -148,6 +148,11 @@ class _PartnersPageState extends State<PartnersPage> {
 
 }
 
+List<String> name = ["Sachin Kumar","Nikita Gandhi","Dinesh Shanmugan C","Rohan Mishra","Thiyagaraj T","Shashank Barki", "Ananya", "Ashwini Purohit","Ajay Ravindra","Manjunath Iyer BS"];
+List<String> des = ["From chatbots, Voice to building immersive Visual games for Google Assistant","Making handsome deals with ML","Building Android Apps at Scale","The 180 degree shift - from Engineering to Design","Building Your Developer Roadmap","Quicken your Cloud Journey using Qwiklabs", "Getting most out of Developer Communities","Building a startup as a college student","Succeeding in Software","Automation of Android and iOS builds and publishing them to app stores"];
+List<String> company = ["Google Developers Expert", "Google","RedBus","Zomato","Kubric","Manhattan Associates", "WTM","Winuall.com","Crio.Do","Atlassian"];
+List<String> img = ["lib/assests/one.png","lib/assests/two.png","lib/assests/three.jpg","lib/assests/four.jpg","lib/assests/five.png","lib/assests/six.JPG","lib/assests/seven.jpeg","lib/assests/eight.jpg","lib/assests/nine.JPG","lib/assests/ten.png"];
+
 Widget PromotionsPage(){
   return Container(
       width: MediaQuery.of(context).size.width,
@@ -178,7 +183,7 @@ child: Column(
           height: 90,
           width: 90,
          color: Colors.black,
-         child: Image.network("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg")
+         child: Image.asset(img[index])
         ),
         ClipPath(
           clipper: BottomWaveClipper(),
@@ -200,20 +205,20 @@ child: Column(
           ))
       ],
     ),
-    Container(
+    /*Container(
       margin: EdgeInsets.only(left: 16),
       alignment: Alignment(-1,0),
       child: Text("@twitter",style: TextStyle(color: Colors.blue),),
+    ),*/
+    Container(
+      margin: EdgeInsets.only(left: 16,top: 16),
+      alignment: Alignment(-1,0),
+      child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
     ),
     Container(
       margin: EdgeInsets.only(left: 16,top: 16),
       alignment: Alignment(-1,0),
-      child: Text("Nikita Gandhi",style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
-    ),
-    Container(
-      margin: EdgeInsets.only(left: 16,top: 16),
-      alignment: Alignment(-1,0),
-      child: Text("Making Handsom Deals with ML",style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
+      child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
     ),
     Container(
         margin: EdgeInsets.only(left: 16,top: 16,right: 16),
@@ -231,16 +236,16 @@ child: Column(
 //                    width: (MediaQuery.of(context).size.width/10),
               decoration: BoxDecoration(
                 shape:BoxShape.circle,
-                color:Colors.red,
+                color:Colors.yellow,
               ),
               child: Text(" "),),
             Padding(padding: EdgeInsets.only(left: 3),),
-            Text("Design",style: TextStyle(color: Colors.red))
+            Text("Technical",style: TextStyle(color: Colors.yellow))
           ],
         ),
 
         Container(
-          child: Text("Google"),
+          child: Text(company[index]),
         )
 
       ],
