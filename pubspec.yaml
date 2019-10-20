@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  google_maps_flutter: ^0.5.21+8
   flutter:
     sdk: flutter
 
@@ -71,7 +72,7 @@ flutter:
   assets:
 
     - lib/assests/DSCVITLogo.png
-    - lib/assests/devJamsLogo.png
+    - lib/assests/dev.webp
 
 
 

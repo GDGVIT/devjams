@@ -100,7 +100,7 @@ class _PartnersPageState extends State<PartnersPage> {
     return Scaffold(
       backgroundColor: background,
       body: new DefaultTabController(
-        length: 2,
+        length: 1,
         child: NestedScrollView(
           controller: scrollController,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -121,9 +121,9 @@ class _PartnersPageState extends State<PartnersPage> {
                       Tab(child:Container(
                           margin: EdgeInsets.only(left: 32,right: 8),
                           child: Text("Speakers", style: TextStyle(fontSize: 26.0),)),),
-                      Tab(child:Container(
-                        margin: EdgeInsets.only(left: 0,right: 32),
-                        child:  Text("Sponsors", style: TextStyle(fontSize: 26.0)),)),
+//                      Tab(child:Container(
+//                        margin: EdgeInsets.only(left: 0,right: 32),
+//                        child:  Text("Sponsors", style: TextStyle(fontSize: 26.0)),)),
 
                     ],
                   ),
@@ -139,7 +139,7 @@ class _PartnersPageState extends State<PartnersPage> {
                 children: <Widget>[
                   PromotionsPage(),
 //                  CollaboratorsPage(),
-                  SponsorsPage(),
+//                  SponsorsPage(),
                 ],
               )),
         ),

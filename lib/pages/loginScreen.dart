@@ -79,15 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ))):new Container();
 
     return  Scaffold(
-      appBar: _load ? AppBar(backgroundColor: Colors.white, elevation: 0,): AppBar(title:Text("Login",style: TextStyle(color: Colors.black),),
-      centerTitle: true,
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: background,
-        elevation: 0,
-        automaticallyImplyLeading: true,
-      ),
+
     body:Stack(
       children: <Widget>[
 
@@ -100,7 +92,14 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-//            Image.asset('lib/assests/logo.png' , width: (MediaQuery.of(context).size.width/2), height: 200.0,),
+          Container(
+          width: 500,
+          child:
+            Image.asset('lib/assests/dev.webp' ,)),
+            Padding(padding: EdgeInsets.all(8),),
+Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
+            Padding(padding: EdgeInsets.all(8),),
+            Image.asset('lib/assests/DSCVITLogo.png' , width: (MediaQuery.of(context).size.width/2), ),
             Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/20),
                 padding: EdgeInsets.only(left: 16.0,right:16.0,top: 26.0),
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/20),
-                        padding: EdgeInsets.only(left: 16.0,right:16.0,top: 26.0),
+                        padding: EdgeInsets.only(left: 16.0,right:16.0),
                         child: TextFormField(
                             style: TextStyle(color: Colors.blue,fontFamily: 'Raleway'),
                             cursorColor: Theme.of(context).primaryColor,
@@ -140,27 +139,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   GestureDetector(
                       child: Container(
                         margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/20),
-                        width: MediaQuery.of(context).size.width/2,
+                        width: MediaQuery.of(context).size.width-100,
                         height: 55.0,
                         alignment: Alignment.center,
                          decoration: BoxDecoration(
+                           color: blue,
 
-                                                              gradient: LinearGradient(
-                                                                begin: Alignment.topRight,
-                                                                end: Alignment.bottomLeft,
-                                                                stops: [ 0.1,0.3,0.7,0.9],
-                                                                colors: [
-Color(0xFF2196F3),
- Color(0xFF1E88E5),
-  Color(0xFF1976D2),
-                                                                  Color(0xFF1565C0),
-                                                                 
-                                                                 
-
-      
-
-
-                                                                ],),
+//                                                              gradient: LinearGradient(
+//                                                                begin: Alignment.topRight,
+//                                                                end: Alignment.bottomLeft,
+//                                                                stops: [ 0.1,0.3,0.7,0.9],
+//                                                                colors: [
+//Color(0xFF2196F3),
+// Color(0xFF1E88E5),
+//  Color(0xFF1976D2),
+//                                                                  Color(0xFF1565C0),
+//
+//
+//
+//
+//
+//
+//                                                                ],),
                                                             
                   boxShadow:<BoxShadow>[
                     BoxShadow(
@@ -174,8 +174,9 @@ Color(0xFF2196F3),
               
                   borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
+
                         child : Text("Login", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-                        padding: EdgeInsets.all(20.0),
+//                        padding: EdgeInsets.all(20.0),
                       ),
                     onTap: (){
                        sendToServer();

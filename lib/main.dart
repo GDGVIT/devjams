@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   final _widgetOptions = [
     HomePage(),
     PartnersPage(),
-    QRCodePage(),
+    LeaderboardPage(),
     ContactUsPage()
   ];
 
@@ -125,9 +125,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             BottomNavigationBar(
               items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(icon:Icon(Icons.home,color: Colors.black,), activeIcon: Icon(Icons.home,color: Colors.blue,),title: Text("Home")),
-              BottomNavigationBarItem(icon:Icon(Icons.info,color: Colors.black), activeIcon: Icon(Icons.info,color: Colors.blue,), title:Text("Partners")),
-              BottomNavigationBarItem(icon:Icon(Icons.filter_center_focus,color: Colors.black), activeIcon: Icon(Icons.filter_center_focus,color: Colors.blue,),title:Text("QR Code")),
-              BottomNavigationBarItem(icon:Icon(Icons.phone,color: Colors.black), activeIcon: Icon(Icons.phone,color: Colors.blue,),title:Text("Contact Us")),
+              BottomNavigationBarItem(icon:Icon(Icons.info,color: Colors.black), activeIcon: Icon(Icons.info,color: Colors.blue,), title:Text("Speakers")),
+              BottomNavigationBarItem(icon:Icon(Icons.search,color: Colors.black), activeIcon: Icon(Icons.search,color: Colors.blue,),title:Text("Hunt")),
+              BottomNavigationBarItem(icon:Icon(Icons.person,color: Colors.black), activeIcon: Icon(Icons.person,color: Colors.blue,),title:Text("Profile")),
               ],
               currentIndex: _selectedIndex,
                 fixedColor: Colors.blue,

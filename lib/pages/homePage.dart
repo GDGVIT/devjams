@@ -264,7 +264,7 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
         children: <Widget>[
         new DefaultTabController(
 
-        length: 2,
+        length: 1,
         child: NestedScrollView(
 
           controller: scrollController,
@@ -284,10 +284,10 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
 //                        color:background,
                           padding: EdgeInsets.only(left:32 ,right: 8),
                           child: Text("Timeline", style: TextStyle(fontSize: 26.0,fontWeight: FontWeight.w500),)),),
-                      Tab(child:Container(
-//                        color:background,
-                        margin: EdgeInsets.only(left: 0,right: 32),
-                        child:  Text("Map", style: TextStyle(fontSize: 26.0)),)),
+//                      Tab(child:Container(
+////                        color:background,
+//                        margin: EdgeInsets.only(left: 0,right: 32),
+//                        child:  Text("Map", style: TextStyle(fontSize: 26.0)),)),
                      ],
                   ),
                 ),
@@ -304,7 +304,7 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
 
               children: <Widget>[
                 DayOne(),
-                DayTwo(),
+//                DayTwo(),
             ],
           )),
         ),),
@@ -322,8 +322,9 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
         )
     );
   }
-  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
-  List<String> time=["7:00","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prze Distribution"];
+  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
+  List<String> time=["7:00 - 8:00 pm","8:00 - 9:00 pm","9:00 - 10:00 pm ","10:00 - 11:00 pm","11:00 - 12:00 am","12:00 - 3:30 am","3:30 - 4:00 am","8:00 - 8:30 am","9:00 - 10:30 am","11:00 - 1:00 pm","1:00 - 3:00 pm","3:00 - 5:00 pm","5:00 - 5:30 pm","5:30 - 9:00 pm","7:00 - 9:00 pm","9:00 - 10:00 pm","10:00 - 1:00 am","1:00 - 1:30 am","2:00 - 5:00 am","5:00 - 6:00 am"];
+
 
   List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
   Widget DayOne(){
@@ -338,12 +339,193 @@ height: double.parse((data.length*130).toString()),
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext ctxt, int index) {
               Color clr=colorsDialog[index%4];
-              return SingleChildScrollView(
+              return index==0?SingleChildScrollView(
+
+                  child: Container(
+                      height: 141,
+                      padding: EdgeInsets.only(left: 16,right: 16),
+                      child:
+                      Column(children: <Widget>[
+                      Container(
+                            child:Text("20th October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                        ),
+                        Row(
+                          children: <Widget>[
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+
+                                Container(
+                                    height:40,
+                                    width: 40,
+//                              height: 20,
+//                    width: (MediaQuery.of(context).size.width/10),
+                                    decoration: BoxDecoration(
+                                      shape:BoxShape.circle,
+                                      color:clr,
+                                    ),
+
+                                    child:Text("  ")
+                                ),
+                                Container(
+                                  width: 3,
+                                  height: 80,
+                                  color:index==4||index==16||index==19?background: Colors.black,
+                                )
+                              ],
+                            ),
+                            Container(
+                                padding: EdgeInsets.only(left: 5),
+                                width: (MediaQuery.of(context).size.width/7)*5,
+                                child:
+                                ClipPath(
+                                  clipper: BottomWaveClipper(),
+                                  child: Container(
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                      color: clr,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                                        Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )])
+                  )):index==5?SingleChildScrollView(
+
+                  child: Container(
+                      height: 141,
+                      padding: EdgeInsets.only(left: 16,right: 16),
+                      child:
+                      Column(children: <Widget>[
+                        Container(
+                            child:Text("21st October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                        ),
+                        Row(
+                          children: <Widget>[
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+
+                                Container(
+                                    height:40,
+                                    width: 40,
+//                              height: 20,
+//                    width: (MediaQuery.of(context).size.width/10),
+                                    decoration: BoxDecoration(
+                                      shape:BoxShape.circle,
+                                      color:clr,
+                                    ),
+
+                                    child:Text("  ")
+                                ),
+                                Container(
+                                  width: 3,
+                                  height: 80,
+                                  color:index==4||index==16||index==19?background: Colors.black,
+                                )
+                              ],
+                            ),
+                            Container(
+                                padding: EdgeInsets.only(left: 5),
+                                width: (MediaQuery.of(context).size.width/7)*5,
+                                child:
+                                ClipPath(
+                                  clipper: BottomWaveClipper(),
+                                  child: Container(
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                      color: clr,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                                        Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )])
+                  )):index==17?SingleChildScrollView(
+
+                  child: Container(
+                      height: 141,
+                      padding: EdgeInsets.only(left: 16,right: 16),
+                      child:
+                      Column(children: <Widget>[
+                        Container(
+                            child:Text("22nd October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                        ),
+                        Row(
+                          children: <Widget>[
+
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+
+                                Container(
+                                    height:40,
+                                    width: 40,
+//                              height: 20,
+//                    width: (MediaQuery.of(context).size.width/10),
+                                    decoration: BoxDecoration(
+                                      shape:BoxShape.circle,
+                                      color:clr,
+                                    ),
+
+                                    child:Text("  ")
+                                ),
+                                Container(
+                                  width: 3,
+                                  height: 80,
+                                  color:index==4||index==16||index==19?background: Colors.black,
+                                )
+                              ],
+                            ),
+                            Container(
+                                padding: EdgeInsets.only(left: 5),
+                                width: (MediaQuery.of(context).size.width/7)*5,
+                                child:
+                                ClipPath(
+                                  clipper: BottomWaveClipper(),
+                                  child: Container(
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                      color: clr,
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                                        Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )])
+                  )):SingleChildScrollView(
 
                   child: Container(
                     height: 120,
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child:
+
                   Row(
                     children: <Widget>[
 
@@ -366,7 +548,7 @@ height: double.parse((data.length*130).toString()),
                           Container(
                             width: 3,
                             height: 80,
-                            color:index==9?background: Colors.black,
+                            color:index==4||index==16||index==19?background: Colors.black,
                           )
                         ],
                       ),
@@ -387,7 +569,7 @@ height: double.parse((data.length*130).toString()),
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-                                  Text("1 pm to 2 pm",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                  Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
                                 ],
                               ),
                             ),

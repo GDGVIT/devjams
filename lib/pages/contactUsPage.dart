@@ -143,7 +143,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     s.setLogincheck("false");
     s.setToken("");
     Navigator.of(context).popUntil((route) => route.isFirst);
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => IntroScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => LoginScreen()));
 //    }
 //
 //     else{
@@ -308,7 +308,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     itemCount: 10,
     itemBuilder: (BuildContext ctxt, int index) {
     return Container(
-    height: 280,
+    height: 200,
     width: MediaQuery.of(context).size.width-32,
     margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
     decoration: BoxDecoration(
@@ -384,6 +384,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     ),
 
     Container(
+      width: 60,
     child: Image.asset("lib/assests/DSCVITLogo.png"),
     )
 
@@ -404,16 +405,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     return Scaffold(body:Container(
     child:Column(
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.fromLTRB(50, 40, 16, 0),
-          alignment:Alignment(-1, 0) ,
-          child: Text("Full Name",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
-        ),
-        Container(
-          padding: EdgeInsets.fromLTRB(50, 16, 16, 0),
-          alignment:Alignment(-1, 0) ,
-          child: Text("Prateek Mewara"),
-        ),
+
         Container(
           padding: EdgeInsets.fromLTRB(50, 40, 16, 0),
           alignment:Alignment(-1, 0) ,
@@ -439,7 +431,28 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
           size: 200.0,
         )
         ),
+GestureDetector(
+  onTap: (){
 
+    logOut();
+  },
+  child:
+Container(
+    height: 60,
+    width: MediaQuery.of(context).size.width-100,
+    margin: EdgeInsets.only(left:32,right: 32,top: 32),
+    decoration: BoxDecoration(
+        boxShadow:<BoxShadow>[
+          BoxShadow(blurRadius: 2.0,
+              color:Colors.grey[400] ,
+              offset: Offset(0.5,0.5))
+
+        ],
+        shape: BoxShape.rectangle,
+        color: red,
+        borderRadius: BorderRadius.all(Radius.circular(5))),
+    child:Center(child:Text("Logout",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),))
+))
       ],
     )
 
