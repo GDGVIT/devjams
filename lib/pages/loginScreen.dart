@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
           width: 500,
           child:
-            Image.asset('lib/assests/dev.webp' ,)),
+            Image.asset('lib/assests/DevJamsLogo.png')),
             Padding(padding: EdgeInsets.all(8),),
 Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
             Padding(padding: EdgeInsets.all(8),),
