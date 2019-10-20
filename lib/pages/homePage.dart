@@ -584,6 +584,11 @@ color: background,
                             )])
                   )):SingleChildScrollView(
 
+                  child:GestureDetector(
+                  onTap: (){
+//                    sendToServer("Jim Jam",)
+                    
+              },
                   child: Container(
                     height: 120,
                   padding: EdgeInsets.only(left: 16,right: 16),
@@ -641,7 +646,7 @@ color: background,
                           ))
                     ],
                   )
-              ));
+              )));
 
             }
     ),
@@ -655,7 +660,7 @@ color: background,
    "name":"",
    "des":""
  };
-  sendToServerQR(String name,String des){
+  sendToServer(String name,String des){
 
     setState(() {
       _load=true;
@@ -674,34 +679,41 @@ color: background,
       print(response.statusCode);
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        if (data["err"] == "Max team login size reached")
+        if (data["email"] == email)
         {
 //          setState(() {
 //            _load=false;
 //          });
 //          s.setLogincheck('false');
-//          Fluttertoast.showToast(
-//              msg: "Max team login size reached",
-//              toastLength: Toast.LENGTH_SHORT,
-//              gravity: ToastGravity.BOTTOM,
-//              timeInSecForIos: 1,
-//              backgroundColor: Colors.grey[700],
-//              textColor: Colors.white);
+          Fluttertoast.showToast(
+              msg: "Congratulation",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
         }
         else if(data["err"] == "Not found"){
 //          setState(() {
 //            _load=false;
 //          });
 //          s.setLogincheck('false');
-//          Fluttertoast.showToast(
-//              msg: "Code not found",
-//              toastLength: Toast.LENGTH_SHORT,
-//              gravity: ToastGravity.BOTTOM,
-//              timeInSecForIos: 1,
-//              backgroundColor: Colors.grey[700],
-//              textColor: Colors.white);
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
         }
         else {
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
 //          print(data);
 //          setState(() {
 //            _load = false;

@@ -5,6 +5,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:DevJams/Presentation/util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:DevJams/models/global.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
+import 'package:DevJams/models/sharedPref.dart';
 import 'package:snaplist/snaplist.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -53,7 +60,8 @@ class _PartnersPageState extends State<PartnersPage> {
 
   @override
   void initState() {
-
+getEmail();
+getToken();
     super.initState();
     scrollController = new ScrollController();
     scrollController.addListener(() => setState(() {}));
@@ -86,6 +94,40 @@ class _PartnersPageState extends State<PartnersPage> {
     });
   }
 
+  String token="";
+  String email="";
+  int currentIndex=0;
+  SharedPreferencesTest s = new SharedPreferencesTest();
+  Future<String> futureToken;
+  Future<String> futureEmail;
+  getToken() async{
+    futureToken=s.getToken();
+    futureToken.then((res){
+      setState(() {
+        token=res;
+      });
+
+    });}
+
+  getEmail() async{
+    futureEmail=s.getEmail();
+    futureEmail.then((res){
+      if(res.compareTo("")==0||res==null||res.compareTo("yo")==0){
+
+        setState(() {
+          email=res;
+          currentIndex=0;
+        });
+
+      }
+      else{
+        setState(() {
+          email=res;
+          currentIndex=1;
+        });
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -553,6 +595,115 @@ Widget CollaboratorsPage(){
   }
 ));
 }
+
+  Map<String , dynamic> body={
+    "name":"",
+    "des":""
+  };
+  sendToServer(String name,String des){
+
+
+    body["name"]='$name';
+    body["des"]='$des';
+
+    Future fetchPosts(http.Client client) async {
+      print("yjhtgfdsyutrgds");
+      var response = await http.post(
+        URL_POSTJAM, headers: {"Content-Type": "application/json","Authorization":"$token"},
+        body: json.encode(body),);
+
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data["email"] == email)
+        {
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+          Fluttertoast.showToast(
+              msg: "Congratulation",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else if(data["err"] == "Not found"){
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else {
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+//          print(data);
+//          setState(() {
+//            _load = false;
+//          });
+//          s.setLogincheck('true');
+//          Navigator.of(context).pushNamedAndRemoveUntil(
+////              '/homepage', (Route<dynamic> route) => false);
+        }
+      }
+      else {
+
+        Fluttertoast.showToast(
+            msg: "Try Again",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.grey[700],
+            textColor: Colors.white);
+      }
+    }
+
+
+
+
+    return FutureBuilder(
+
+        future: fetchPosts(http.Client()),
+        builder: (BuildContext context,AsyncSnapshot snapshot){
+          if(snapshot.data==null){
+            return Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+
+          }
+          else{
+            return Container();
+
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+  }
 }
 
 class BottomWaveClipper extends CustomClipper<Path> {

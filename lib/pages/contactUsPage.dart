@@ -9,6 +9,12 @@ import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DevJams/models/global.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:DevJams/models/global.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
@@ -229,18 +235,6 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
 
 
 
-    Widget loadingIndicator =_load? new Container(
-        color: Colors.transparent,
-        height: MediaQuery.of(context).size.height,
-        width:  MediaQuery.of(context).size.width,
-        child:Center(
-
-          child:QrImage(
-            data: email,
-            //version: 3,
-            size: MediaQuery.of(context).size.width,
-          )
-        )):new Container();
 
     return  Scaffold(
 
@@ -292,7 +286,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
                         )),
                   ),),
               ),
-              loadingIndicator
+
             ]
         )
     );
@@ -317,7 +311,14 @@ List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/asses
       child: ListView.builder(
           itemCount: img.length,
           itemBuilder: (BuildContext ctxt, int index) {
-      return Container(
+      return GestureDetector(
+          onTap: (){
+
+            if(index==10){
+              sendToServer("Music Jam","Enjoy being happy everyday! Hopefully you can hear our happiness in the music.");
+            }
+      },
+          child:Container(
         height: 180,
             width: MediaQuery.of(context).size.width-32,
             margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
@@ -334,7 +335,6 @@ List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/asses
           child:Container(
 child: Column(
   children: <Widget>[
-//>>>>>>> 18db13cbfccb2e0e10d470a17c5d62417ff2e6a2
     Row(
       children: <Widget>[
         Container(
@@ -411,23 +411,13 @@ child: Column(
           ],
         ),
 
-//<<<<<<< HEAD
-//    Container(
-//      width: 60,
-//    child: Image.asset("lib/assests/DSCVITLogo.png"),
-//    )
-//=======
-//        Container(
-//          child: Text("DSC VIT"),
-//        )
-//>>>>>>> 18db13cbfccb2e0e10d470a17c5d62417ff2e6a2
 
       ],
     ))
   ],
 ),
       )
-      ) ;
+      )) ;
   }
 ))));
   }
@@ -495,6 +485,103 @@ Container(
 
     )
     );
+  }
+
+  Map<String , dynamic> body={
+    "name":"",
+    "des":""
+  };
+  sendToServer(String name,String des){
+
+//    setState(() {
+//      _load=true;
+//    });
+
+
+    body["name"]='$name';
+    body["des"]='$des';
+
+    Future fetchPosts(http.Client client) async {
+      print("yjhtgfdsyutrgds");
+      var response = await http.post(
+        URL_POSTJAM, headers: {"Content-Type": "application/json","Authorization":"$token"},
+        body: json.encode(body),);
+
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data["email"] == email)
+        {
+          Fluttertoast.showToast(
+              msg: "Congratulation",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else if(data["err"] == "Not found"){
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else {
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+      }
+      else {
+        Fluttertoast.showToast(
+            msg: "Try Again",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.grey[700],
+            textColor: Colors.white);
+      }
+    }
+
+
+
+
+    return FutureBuilder(
+
+        future: fetchPosts(http.Client()),
+        builder: (BuildContext context,AsyncSnapshot snapshot){
+          if(snapshot.data==null){
+            return Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+
+          }
+          else{
+            return Container();
+
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   Color getColor(String s){

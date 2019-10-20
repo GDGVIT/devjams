@@ -8,6 +8,12 @@ import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DevJams/models/global.dart';
+import 'package:http/http.dart' as http;
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:DevJams/models/global.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -617,6 +623,121 @@ mainAxisAlignment: MainAxisAlignment.center,
       ),
     ))
     );
+  }
+
+  Map<String , dynamic> body={
+    "name":"",
+    "des":""
+  };
+  sendToServer(String name,String des){
+
+    setState(() {
+      _load=true;
+    });
+
+
+    body["name"]='$name';
+    body["des"]='$des';
+
+    Future fetchPosts(http.Client client) async {
+      print("yjhtgfdsyutrgds");
+      var response = await http.post(
+        URL_POSTJAM, headers: {"Content-Type": "application/json","Authorization":"$token"},
+        body: json.encode(body),);
+
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data["email"] == email)
+        {
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+          Fluttertoast.showToast(
+              msg: "Congratulation",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else if(data["err"] == "Not found"){
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+        }
+        else {
+          Fluttertoast.showToast(
+              msg: "Try Again",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIos: 1,
+              backgroundColor: Colors.grey[700],
+              textColor: Colors.white);
+//          print(data);
+//          setState(() {
+//            _load = false;
+//          });
+//          s.setLogincheck('true');
+//          Navigator.of(context).pushNamedAndRemoveUntil(
+////              '/homepage', (Route<dynamic> route) => false);
+        }
+      }
+      else {
+        setState(() {
+          _load=false;
+        });
+        Fluttertoast.showToast(
+            msg: "Sorry, Server Error",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.grey[700],
+            textColor: Colors.white);
+      }
+    }
+
+
+
+
+    return FutureBuilder(
+
+        future: fetchPosts(http.Client()),
+        builder: (BuildContext context,AsyncSnapshot snapshot){
+          if(snapshot.data==null){
+            return Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+
+          }
+          else{
+            return Container();
+
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
 
