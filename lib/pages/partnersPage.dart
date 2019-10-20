@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:DevJams/Presentation/util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:snaplist/snaplist.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PartnersPage extends StatefulWidget {
   PartnersPage({Key key,this.restaurantID,this.workerID}) : super(key: key);
@@ -100,7 +101,7 @@ class _PartnersPageState extends State<PartnersPage> {
     return Scaffold(
       backgroundColor: background,
       body: new DefaultTabController(
-        length: 1,
+        length: 2,
         child: NestedScrollView(
           controller: scrollController,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -121,9 +122,9 @@ class _PartnersPageState extends State<PartnersPage> {
                       Tab(child:Container(
                           margin: EdgeInsets.only(left: 32,right: 8),
                           child: Text("Speakers", style: TextStyle(fontSize: 26.0),)),),
-//                      Tab(child:Container(
-//                        margin: EdgeInsets.only(left: 0,right: 32),
-//                        child:  Text("Sponsors", style: TextStyle(fontSize: 26.0)),)),
+                      Tab(child:Container(
+                        margin: EdgeInsets.only(left: 0,right: 32),
+                        child:  Text("Sponsors", style: TextStyle(fontSize: 26.0)),)),
 
                     ],
                   ),
@@ -139,7 +140,7 @@ class _PartnersPageState extends State<PartnersPage> {
                 children: <Widget>[
                   PromotionsPage(),
 //                  CollaboratorsPage(),
-//                  SponsorsPage(),
+                  SponsorsPage(),
                 ],
               )),
         ),
@@ -147,8 +148,10 @@ class _PartnersPageState extends State<PartnersPage> {
     );
 
 }
+List<String> time = ["10:00 pm - 12:00 am","11:30 am - 12:00 pm","12:30 pm - 1:00 pm","11:10 pm - 12:00 am","10:00 pm - 10:35 pm","Shashank Barki", "10:35 pm - 11:10 pm", "10:00pm to 10:45 pm","11:00 am -11:30 am"];
+  List<String> gallary = ["Gallary 2","Gallary 1","Gallary 1","Gallary 1","Gallary 1","Gallary 2", "Gallary 1", "Gallary 2","Gallary 1","Gallary 2"];
 
-List<String> name = ["Sachin Kumar","Nikita Gandhi","Dinesh Shanmugan C","Rohan Mishra","Thiyagaraj T","Shashank Barki", "Ananya", "Ashwini Purohit","Ajay Ravindra","Manjunath Iyer BS"];
+  List<String> name = ["Sachin Kumar","Nikita Gandhi","Dinesh Shanmugan C","Rohan Mishra","Thiyagaraj T","Shashank Barki", "Ananya", "Ashwini Purohit","Ajay Ravindra"];
 List<String> des = ["From chatbots, Voice to building immersive Visual games for Google Assistant","Making handsome deals with ML","Building Android Apps at Scale","The 180 degree shift - from Engineering to Design","Building Your Developer Roadmap","Quicken your Cloud Journey using Qwiklabs", "Getting most out of Developer Communities","Building a startup as a college student","Succeeding in Software","Automation of Android and iOS builds and publishing them to app stores"];
 List<String> company = ["Google Developers Expert", "Google","RedBus","Zomato","Kubric","Manhattan Associates", "WTM","Winuall.com","Crio.Do","Atlassian"];
 List<String> img = ["lib/assests/one.png","lib/assests/two.png","lib/assests/three.jpg","lib/assests/four.jpg","lib/assests/five.png","lib/assests/six.JPG","lib/assests/seven.jpeg","lib/assests/eight.jpg","lib/assests/nine.JPG","lib/assests/ten.png"];
@@ -157,7 +160,7 @@ Widget PromotionsPage(){
   return Container(
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-          itemCount: 10,
+          itemCount: 9,
           itemBuilder: (BuildContext ctxt, int index) {
       return Container(
         height: 280,
@@ -189,17 +192,17 @@ child: Column(
           clipper: BottomWaveClipper(),
           child: Container(
             height: 60,
-            width: (MediaQuery.of(context).size.width/5)*2,
+            width: ((MediaQuery.of(context).size.width/5)*3)-27,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
-              color:Colors.red,
+              color:red,
             ),
           child:  Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("Gallery 1",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-              Text("1 pm to 2 pm",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+              Text(gallary[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+              Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
             ],
           ),
           ))
@@ -236,11 +239,11 @@ child: Column(
 //                    width: (MediaQuery.of(context).size.width/10),
               decoration: BoxDecoration(
                 shape:BoxShape.circle,
-                color:Colors.yellow,
+                color:yellow,
               ),
               child: Text(" "),),
             Padding(padding: EdgeInsets.only(left: 3),),
-            Text("Technical",style: TextStyle(color: Colors.yellow))
+            Text("Technical",style: TextStyle(color: yellow))
           ],
         ),
 
@@ -257,7 +260,32 @@ child: Column(
   }
 ));
 }
-
+List<String> sponsor=["lib/assests/ATKT.png",
+    "lib/assests/Balsamiq.png",
+    "lib/assests/CreativeTim.png",
+    "lib/assests/Crio.Do.png",
+    "lib/assests/Hackerearth.png",
+    "lib/assests/Hasura.png",
+    "lib/assests/indico.io.png",
+    "lib/assests/LBRY.io.png",
+    "lib/assests/Overleaf.png",
+    "lib/assests/TheSouledStore.png",
+    "lib/assests/Zeit.png",
+    "lib/assests/Zeplin.png",
+    "lib/assests/Zulip.png"];
+  List<String> website=["https://atkt.in",
+    "https://balsamiq.com",
+    "https://www.creative-tim.com",
+    "https://crio.do",
+    "https://www.hackerearth.com",
+    "https://hasura.io",
+    "https://indico.io",
+    "https://lbry.com",
+    "https://www.overleaf.com",
+    "https://www.thesouledstore.com" ,
+    "https://zeit.co",
+    "https://zeplin.io",
+    "https://zulipchat.com"];
   Widget SponsorsPage(){
     int i=0;
     ScrollController _scrollController = new ScrollController();
@@ -273,7 +301,8 @@ Container(
 //  height: (MediaQuery.of(context).size.width/4)*3,
   child:
   ListView.builder(
-      itemCount: 10,
+      itemCount: sponsor.length,
+      physics: NeverScrollableScrollPhysics(),
       controller: _scrollController,
       scrollDirection: Axis.horizontal,
       itemBuilder: (BuildContext ctxt, int index){
@@ -306,8 +335,8 @@ Container(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  SvgPicture.asset('lib/assests/zeit.svg', semanticsLabel: "Logo",width: (MediaQuery.of(context).size.width/2)-32, height: 100.0),
-                                 // Image.asset('lib/assests/zeit.svg' , width: (MediaQuery.of(context).size.width/2)-32, height: 100.0,),
+//                                  SvgPicture.asset(sponsor[index], semanticsLabel: "Logo",width: (MediaQuery.of(context).size.width/2)-32, height: 100.0),
+                                  Image.asset(sponsor[index] , width: (MediaQuery.of(context).size.width/2)-32, height: 100.0,),
                                 ],
                               )),
 
@@ -322,24 +351,36 @@ Container(
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          IconButton(icon: Icon(Icons.arrow_back,size: 36,color:Colors.yellow[600]),onPressed: (){
+          IconButton(icon: Icon(Icons.arrow_back,size: 36,color:yellow),onPressed: (){
             setState(() {
+              if(i>0) {
+                i = i - 1;
+              }
              _scrollController.animateTo(_scrollController.position.pixels-MediaQuery.of(context).size.width, duration: new Duration(seconds: 1), curve: Curves.ease);
 //              _isVisible=false;
             });
 
           },),
-          Container(
+         GestureDetector(
+             onTap: (){
+
+               _launchURL(website[i]);
+             },
+
+             child: Container(
               height: 60,
               width: 60,
               decoration: BoxDecoration(
                 shape:BoxShape.circle,
-                color:Colors.yellow[600],
+                color:yellow,
               ),
               child:
-              IconButton(icon: Icon(Icons.share,size: 36,color: Colors.white,),)),
-          IconButton(icon: Icon(Icons.arrow_forward,size: 36,color:Colors.yellow[600],),onPressed: (){
+              IconButton(icon: Icon(Icons.share,size: 36,color: Colors.white,),))),
+          IconButton(icon: Icon(Icons.arrow_forward,size: 36,color:yellow,),onPressed: (){
     setState(() {
+      if(i<sponsor.length) {
+        i = i + 1;
+      }
     _scrollController.animateTo(_scrollController.position.pixels+MediaQuery.of(context).size.width, duration: new Duration(seconds: 1), curve: Curves.ease);
 //              _isVisible=false;
     });
@@ -348,12 +389,23 @@ Container(
         ],
       ))
     ]));
+
+
+  }
+  _launchURL(String val) async {
+    var url = val;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
 Widget CollaboratorsPage(){
   return Container(
       width: MediaQuery.of(context).size.width,
       child : LayoutBuilder(
+
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
       return SingleChildScrollView(
         padding: EdgeInsets.only(bottom:20.0),

@@ -5,9 +5,13 @@ import 'package:DevJams/Presentation/util.dart';
 import 'package:DevJams/models/sharedPref.dart';
 import 'package:DevJams/pages/loginScreen.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DevJams/models/global.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
@@ -264,7 +268,7 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
         children: <Widget>[
         new DefaultTabController(
 
-        length: 1,
+        length: 2,
         child: NestedScrollView(
 
           controller: scrollController,
@@ -281,13 +285,13 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
                     unselectedLabelColor: Colors.grey,
                     tabs: [
                       Tab(child:Container(
-//                        color:background,
+                        color:background,
                           padding: EdgeInsets.only(left:32 ,right: 8),
                           child: Text("Timeline", style: TextStyle(fontSize: 26.0,fontWeight: FontWeight.w500),)),),
-//                      Tab(child:Container(
-////                        color:background,
-//                        margin: EdgeInsets.only(left: 0,right: 32),
-//                        child:  Text("Map", style: TextStyle(fontSize: 26.0)),)),
+                      Tab(child:Container(
+//                        color:background,
+                        margin: EdgeInsets.only(left: 0,right: 32),
+                        child:  Text("Map", style: TextStyle(fontSize: 26.0)),)),
                      ],
                   ),
                 ),
@@ -304,7 +308,7 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
 
               children: <Widget>[
                 DayOne(),
-//                DayTwo(),
+                DayTwo(),
             ],
           )),
         ),),
@@ -314,11 +318,46 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
       )
     );
   }
-
+List<String> map=["lib/assests/mapa.png","lib/assests/mapb.png","lib/assests/mapc.png"];
  Widget DayTwo(){
     return Scaffold(
+      backgroundColor: background,
         body: Container(
+          height: MediaQuery.of(context).size.height,
+child:ListView(
+scrollDirection: Axis.horizontal,
+   children: <Widget>[
+     Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>[
+         Container(
 
+           child: Image.asset(map[0]),),
+         Container(
+
+           child: Image.asset(map[1]),), Container(
+
+           child: Image.asset(map[2]),)
+       ],
+     )
+
+
+
+   ])
+//ListView.builder(
+//
+//  scrollDirection: Axis.horizontal,
+//    itemCount: 3,
+//    shrinkWrap: true,
+//    padding: EdgeInsets.all(1),
+//
+//    itemBuilder:(BuildContext ctxt, int index){
+//
+//      return Container(
+//          padding: EdgeInsets.all(1),
+//        child: Image.asset(map[index]),
+//      );
+//    }),
         )
     );
   }
@@ -327,12 +366,14 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
 
 
 
-  List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
+  List<Color> colorsDialog=[yellow,blue,green,red];
   Widget DayOne(){
-    return Scaffold(body:Container(
-height: double.parse((data.length*130).toString()),
-//color: background,
-        margin: EdgeInsets.only(top: 10.0, left:  MediaQuery.of(context).size.width/20),
+    return Scaffold(
+
+        body:Container(
+height: double.parse((data.length*140).toString()),
+color: background,
+        padding: EdgeInsets.only(top: 10.0, left:  MediaQuery.of(context).size.width/20),
 
         alignment: Alignment.centerLeft,
         child :ListView.builder(
@@ -343,11 +384,14 @@ height: double.parse((data.length*130).toString()),
               return index==0?SingleChildScrollView(
 
                   child: Container(
-                      height: 141,
+                      height: 150,
                       padding: EdgeInsets.only(left: 16,right: 16),
                       child:
-                      Column(children: <Widget>[
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
                       Container(
+                        margin: EdgeInsets.only(bottom: 8),
                             child:Text("20th October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
                         ),
                         Row(
@@ -371,7 +415,7 @@ height: double.parse((data.length*130).toString()),
                                 ),
                                 Container(
                                   width: 3,
-                                  height: 80,
+                                  height: 81,
                                   color:index==4||index==16||index==19?background: Colors.black,
                                 )
                               ],
@@ -383,19 +427,23 @@ height: double.parse((data.length*130).toString()),
                                 ClipPath(
                                   clipper: BottomWaveClipper(),
                                   child: Container(
+
                                     height: 80,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
                                       color: clr,
                                     ),
-                                    child: Column(
+                                    child: Container(
+                                        margin: EdgeInsets.only(left: 50),
+                                        child:Column(
+
                                       mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
                                         Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
                                       ],
-                                    ),
+                                    )),
                                   ),
                                 ))
                           ],
@@ -403,123 +451,137 @@ height: double.parse((data.length*130).toString()),
                   )):index==5?SingleChildScrollView(
 
                   child: Container(
-                      height: 141,
+                      height: 150,
                       padding: EdgeInsets.only(left: 16,right: 16),
                       child:
-                      Column(children: <Widget>[
-                        Container(
-                            child:Text("21st October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
-                        ),
-                        Row(
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                            Container(
+                                margin: EdgeInsets.only(bottom: 8),
+                                child:Text("21st October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                            ),
+                            Row(
                               children: <Widget>[
 
-                                Container(
-                                    height:40,
-                                    width: 40,
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+
+                                    Container(
+                                        height:40,
+                                        width: 40,
 //                              height: 20,
 //                    width: (MediaQuery.of(context).size.width/10),
-                                    decoration: BoxDecoration(
-                                      shape:BoxShape.circle,
-                                      color:clr,
-                                    ),
+                                        decoration: BoxDecoration(
+                                          shape:BoxShape.circle,
+                                          color:clr,
+                                        ),
 
-                                    child:Text("  ")
+                                        child:Text("  ")
+                                    ),
+                                    Container(
+                                      width: 3,
+                                      height: 81,
+                                      color:index==4||index==16||index==19?background: Colors.black,
+                                    )
+                                  ],
                                 ),
                                 Container(
-                                  width: 3,
-                                  height: 80,
-                                  color:index==4||index==16||index==19?background: Colors.black,
-                                )
+                                    padding: EdgeInsets.only(left: 5),
+                                    width: (MediaQuery.of(context).size.width/7)*5,
+                                    child:
+                                    ClipPath(
+                                      clipper: BottomWaveClipper(),
+                                      child: Container(
+
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                          color: clr,
+                                        ),
+                                        child: Container(
+                                            margin: EdgeInsets.only(left: 50),
+                                            child:Column(
+
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                                                Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                              ],
+                                            )),
+                                      ),
+                                    ))
                               ],
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(left: 5),
-                                width: (MediaQuery.of(context).size.width/7)*5,
-                                child:
-                                ClipPath(
-                                  clipper: BottomWaveClipper(),
-                                  child: Container(
-                                    height: 80,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
-                                      color: clr,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-                                        Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
-                                      ],
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        )])
+                            )])
                   )):index==17?SingleChildScrollView(
 
                   child: Container(
-                      height: 141,
+                      height: 150,
                       padding: EdgeInsets.only(left: 16,right: 16),
                       child:
-                      Column(children: <Widget>[
-                        Container(
-                            child:Text("22nd October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
-                        ),
-                        Row(
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                            Container(
+                                margin: EdgeInsets.only(bottom: 8),
+                                child:Text("22nd October",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                            ),
+                            Row(
                               children: <Widget>[
 
-                                Container(
-                                    height:40,
-                                    width: 40,
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+
+                                    Container(
+                                        height:40,
+                                        width: 40,
 //                              height: 20,
 //                    width: (MediaQuery.of(context).size.width/10),
-                                    decoration: BoxDecoration(
-                                      shape:BoxShape.circle,
-                                      color:clr,
-                                    ),
+                                        decoration: BoxDecoration(
+                                          shape:BoxShape.circle,
+                                          color:clr,
+                                        ),
 
-                                    child:Text("  ")
+                                        child:Text("  ")
+                                    ),
+                                    Container(
+                                      width: 3,
+                                      height: 81,
+                                      color:index==4||index==16||index==19?background: Colors.black,
+                                    )
+                                  ],
                                 ),
                                 Container(
-                                  width: 3,
-                                  height: 80,
-                                  color:index==4||index==16||index==19?background: Colors.black,
-                                )
+                                    padding: EdgeInsets.only(left: 5),
+                                    width: (MediaQuery.of(context).size.width/7)*5,
+                                    child:
+                                    ClipPath(
+                                      clipper: BottomWaveClipper(),
+                                      child: Container(
+
+                                        height: 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
+                                          color: clr,
+                                        ),
+                                        child: Container(
+                                            margin: EdgeInsets.only(left: 50),
+                                            child:Column(
+
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
+                                                Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
+                                              ],
+                                            )),
+                                      ),
+                                    ))
                               ],
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(left: 5),
-                                width: (MediaQuery.of(context).size.width/7)*5,
-                                child:
-                                ClipPath(
-                                  clipper: BottomWaveClipper(),
-                                  child: Container(
-                                    height: 80,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
-                                      color: clr,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
-                                        Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
-                                      ],
-                                    ),
-                                  ),
-                                ))
-                          ],
-                        )])
+                            )])
                   )):SingleChildScrollView(
 
                   child: Container(
@@ -565,15 +627,17 @@ height: double.parse((data.length*130).toString()),
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(8.0),bottomRight: Radius.circular(8.0)),
                                 color: clr,
                               ),
-                              child: Column(
+                              child:Container(
+                                margin: EdgeInsets.only(left: 50),
+                                child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(data[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
                                   Text(time[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.w300))
                                 ],
                               ),
-                            ),
+                              )),
                           ))
                     ],
                   )
@@ -586,6 +650,114 @@ height: double.parse((data.length*130).toString()),
         )
     );
   }
+
+ Map<String , dynamic> body={
+   "name":"",
+   "des":""
+ };
+  sendToServerQR(String name,String des){
+
+    setState(() {
+      _load=true;
+    });
+
+
+    body["name"]='$name';
+    body["des"]='$des';
+
+    Future fetchPosts(http.Client client) async {
+      print("yjhtgfdsyutrgds");
+      var response = await http.post(
+        URL_POSTJAM, headers: {"Content-Type": "application/json","Authorization":"$token"},
+        body: json.encode(body),);
+
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data["err"] == "Max team login size reached")
+        {
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+//          Fluttertoast.showToast(
+//              msg: "Max team login size reached",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
+        }
+        else if(data["err"] == "Not found"){
+//          setState(() {
+//            _load=false;
+//          });
+//          s.setLogincheck('false');
+//          Fluttertoast.showToast(
+//              msg: "Code not found",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
+        }
+        else {
+//          print(data);
+//          setState(() {
+//            _load = false;
+//          });
+//          s.setLogincheck('true');
+//          Navigator.of(context).pushNamedAndRemoveUntil(
+////              '/homepage', (Route<dynamic> route) => false);
+        }
+      }
+      else {
+        setState(() {
+          _load=false;
+        });
+        Fluttertoast.showToast(
+            msg: "Sorry, Server Error",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIos: 1,
+            backgroundColor: Colors.grey[700],
+            textColor: Colors.white);
+      }
+    }
+
+
+
+
+    return FutureBuilder(
+
+        future: fetchPosts(http.Client()),
+        builder: (BuildContext context,AsyncSnapshot snapshot){
+          if(snapshot.data==null){
+            return Container(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+
+          }
+          else{
+            return Container();
+
+          }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+  }
 }
 class BottomWaveClipper extends CustomClipper<Path> {
   @override
@@ -593,10 +765,10 @@ class BottomWaveClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(size.width, 0.0);
     path.lineTo(size.width, size.height);
-    path.lineTo((size.width/8)+8,size.height);
-    path.arcToPoint(Offset((size.width/8),size.height-8), radius: Radius.circular(8));
+    path.lineTo((size.width/10)+8,size.height);
+    path.arcToPoint(Offset((size.width/10),size.height-8), radius: Radius.circular(8));
 
-    path.lineTo(size.width/8, (size.height/3));
+    path.lineTo(size.width/10, (size.height/3));
     path.close();
     return path;
   }

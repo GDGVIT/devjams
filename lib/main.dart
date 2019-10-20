@@ -9,6 +9,7 @@ import 'package:DevJams/pages/partnersPage.dart';
 import 'package:DevJams/pages/qrCodePage.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
+import 'package:DevJams/Presentation/my_flutter_app_icons.dart';
 import 'dart:convert';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'dart:io';
@@ -124,10 +125,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           bottomNavigationBar: 
             BottomNavigationBar(
               items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon:Icon(Icons.home,color: Colors.black,), activeIcon: Icon(Icons.home,color: Colors.blue,),title: Text("Home")),
-              BottomNavigationBarItem(icon:Icon(Icons.info,color: Colors.black), activeIcon: Icon(Icons.info,color: Colors.blue,), title:Text("Speakers")),
-              BottomNavigationBarItem(icon:Icon(Icons.search,color: Colors.black), activeIcon: Icon(Icons.search,color: Colors.blue,),title:Text("Hunt")),
-              BottomNavigationBarItem(icon:Icon(Icons.person,color: Colors.black), activeIcon: Icon(Icons.person,color: Colors.blue,),title:Text("Profile")),
+              BottomNavigationBarItem(icon:Icon(MyFlutterApp.home,color: unselected,), activeIcon: Icon(MyFlutterApp.home,color:red,)),
+              BottomNavigationBarItem(icon:Icon(MyFlutterApp.info_outline,color: unselected), activeIcon: Icon(MyFlutterApp.info_outline,color: yellow,),),
+              BottomNavigationBarItem(icon:Icon(MyFlutterApp.medal,color: unselected), activeIcon: Icon(MyFlutterApp.medal,color: green,)),
+              BottomNavigationBarItem(icon:Icon(MyFlutterApp.user,color: unselected), activeIcon: Icon(MyFlutterApp.user,color:blue,),),
               ],
               currentIndex: _selectedIndex,
                 fixedColor: Colors.blue,

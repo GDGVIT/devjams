@@ -129,7 +129,7 @@ Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
                     ),
                     validator: validateEM,
                     onSaved: (String val) {
-                      email= val;
+                      email= val.trim();
 //                      print("Code"+code);
                     }
                 )
@@ -147,7 +147,7 @@ Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
                             ),
                             validator: validateEM,
                             onSaved: (String val) {
-                              password = val;
+                              password = val.trim();
 //                              print("Code"+code);
                             }
                         )

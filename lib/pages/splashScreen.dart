@@ -83,10 +83,10 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-/*Container(
-    width: 500,
-    child:
-            Image.asset('lib/assests/DevJamsLogo.png')),*/
+//Container(
+//          width: (MediaQuery.of(context).size.width/2),
+//    child:
+//          Image.asset('lib/assests/newlogo.png')),
 Container(
               child:Text.rich( TextSpan(
                 children: <TextSpan>[

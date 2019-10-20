@@ -12,18 +12,14 @@
 ///       - asset: fonts/MyFlutterApp.ttf
 ///
 /// 
-/// * Modern Pictograms, Copyright (c) 2012 by John Caserta. All rights reserved.
-///         Author:    John Caserta
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://thedesignoffice.org/project/modern-pictograms/
-/// * MFG Labs, Copyright (C) 2012 by Daniel Bruce
-///         Author:    MFG Labs
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://www.mfglabs.com/
-/// * Font Awesome, Copyright (C) 2016 by Dave Gandy
-///         Author:    Dave Gandy
-///         License:   SIL ()
-///         Homepage:  http://fortawesome.github.com/Font-Awesome/
+/// * Linearicons Free, Copyright (C) Linearicons.com
+///         Author:    Perxis
+///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+///         Homepage:  https://linearicons.com
+/// * Material Design Icons, Copyright (C) Google, Inc
+///         Author:    Google
+///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+///         Homepage:  https://design.google.com/icons/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -32,7 +28,9 @@ class MyFlutterApp {
 
   static const _kFontFam = 'MyFlutterApp';
 
-  static const IconData heart = const IconData(0xe800, fontFamily: _kFontFam);
-  static const IconData heart_1 = const IconData(0xe801, fontFamily: _kFontFam);
-  static const IconData heart_2 = const IconData(0xe802, fontFamily: _kFontFam);
+  static const IconData home = const IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData info_outline = const IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData home__2_ = const IconData(0xe802, fontFamily: _kFontFam);
+  static const IconData medal = const IconData(0xe803, fontFamily: _kFontFam);
+  static const IconData user = const IconData(0xe804, fontFamily: _kFontFam);
 }

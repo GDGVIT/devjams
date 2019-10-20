@@ -298,40 +298,18 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
     );
   }
 
-List<String> name = ["Samarth Nayyar","Ayush Priya","Samyak Jain","Dhiraj Jain","Abhishek Kaushik","Apurva Nitanjay", "Preethi G", "Yaswant Narayan","Paritosh Mahajan","Vikrame Vasudev", "Angad Sharma", "Ubaid Usmani", "Prateek Mewara","Satkriti Singh", "Amogh Lele", "Nikhil Singh", "Purushottam Sharma","Ananya Ganesh","Riddhi Gupta","Abhishek Kushwaha","Vishaal Selvaraj","Deepak Malpani","Meherdeep Thakur", "Hardik Kataria","Deepak Nahar","Sanchi Chopra","Dhruv Mittal","Vivek Shetty","Akshat Gupta","Shubham Srivastava","Muskan Rastogi","Kritika Sharma","Naynika Wason","Shreya Maheshwari","Saloni Parekh","Manorama Maharana","Arjun Bhanot","Cyril Peter","Ekaansh Arora", "Riya Kanabar","Ruchica Sinha","Adity Rathore","Shravani Shete"];
+List<String> name = ["Samarth Nayyar 🌸","Ayush Priya 🧸","Samyak Jain","Dhiraj Jain","Abhishek Kaushik","Apurva Nitanjay", "Preethi G", "Yaswant Narayan","Paritosh Mahajan","Vikrame Vasudev", "Angad Sharma   🎸", "Ubaid Usmani", "Prateek Mewara","Satkriti Singh", "Amogh Lele", "Nikhil Singh", "Purushottam Sharma","Ananya Ganesh","Riddhi Gupta","Abhishek Kushwaha","Vishaal Selvaraj","Deepak Malpani","Meherdeep Thakur", "Hardik Kataria","Deepak Nahar","Sanchi Chopra","Dhruv Mittal","Vivek Shetty","Akshat Gupta","Shubham Srivastava","Muskan Rastogi","Kritika Sharma","Naynika Wason","Shreya Maheshwari","Saloni Parekh","Manorama Maharana","Arjun Bhanot","Ekaansh Arora", "Riya Kanabar","Ruchica Sinha","Adity Rathore","Shravani Shete"];
 List<String> des = ["Community Lead","Technical Lead", "Technical Lead","Technical Advisor","Android Lead","Projects Lead","PR Lead", "Android","ML", "Web","Backend","ML","Android","Android","Android","Web","Web","Web"," Backend","Backend","Algorithms","ML","Manager","Manager", "Content","Content","Manager","Manager","Manager","Manager","Manager","Manager","Content","Content","Content","Manager","Manager","Manager","UI/UX","Graphic","Graphic","3D & Motion","Graphic"];
-List<String> field = ["Design", "Technical","Technical","Technical","Technical","Technical","Management","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management", "Design","Design", "Design", "Design", "Design"];
+List<String> field = ["Design", "Technical","Technical","Technical","Technical","Technical","Management","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management", "Design","Design", "Design", "Design", "Design"];
 List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/assests/Samyak.jpg","lib/assests/Dhiraj.jpeg","lib/assests/Abhishek.jpg","lib/assests/Apoorva.jpg","lib/assests/preethi.JPG"
-,"lib/assests/Yaswant.JPG","lib/assests/Paritosh.jpg","lib/assests/Vikrame.jpg","lib/assests/Angad.jpeg","lib/assests/Ubaid.jpg","lib/assests/Prateek.png","lib/assests/Satkriti.jpg","lib/assests/Amogh.jpg","lib/assests/Nikhil.jpeg","lib/assests/Purushottam.jpeg","lib/assests/Ananya.jpg","lib/assests/Riddhi.JPG","lib/assests/Abhi.jpg","lib/assests/Vishaal.jpg","lib/assests/DeepakT.jpg","lib/assests/Cyril.jpg"
+,"lib/assests/Yaswant.JPG","lib/assests/Paritosh.jpg","lib/assests/Vikrame.jpg","lib/assests/Angad.jpeg","lib/assests/Ubaid.jpg","lib/assests/Prateek.png","lib/assests/Satkriti.jpg","lib/assests/Amogh.jpg","lib/assests/Nikhil.jpeg","lib/assests/Purushottam.jpeg","lib/assests/Ananya.jpg","lib/assests/Riddhi.JPG","lib/assests/Abhi.jpg","lib/assests/Vishaal.jpg","lib/assests/DeepakT.jpg"
 ,"lib/assests/Meher.JPG","lib/assests/Hardik.JPEG","lib/assests/DeepakM.jpeg","lib/assests/Sanchi.jpeg","lib/assests/Dhruv.jpg","lib/assests/Vivek.jpg","lib/assests/Akshat.jpeg","lib/assests/Shubham.jpg","lib/assests/Muskan.jpg","lib/assests/Kritika.JPG","lib/assests/Naynika.jpeg","lib/assests/Shreya.jpeg","lib/assests/Saloni.jpg","lib/assests/Manorama.jpg","lib/assests/Arjun.jpeg"
 ,"lib/assests/Ekaansh.jpeg","lib/assests/Riya.jpg","lib/assests/Ruchika.jpeg","lib/assests/Aditya.jpg","lib/assests/Shravani.jpg"];
 
   Widget DayTwo(){
     return Scaffold(
-//<<<<<<< HEAD
-//        body:Container(
-//        width: MediaQuery.of(context).size.width,
-//    child: ListView.builder(
-//    itemCount: 10,
-//    itemBuilder: (BuildContext ctxt, int index) {
-//    return Container(
-//    height: 200,
-//    width: MediaQuery.of(context).size.width-32,
-//    margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
-//    decoration: BoxDecoration(
-//    boxShadow:<BoxShadow>[
-//    BoxShadow(blurRadius: 2.0,
-//    color:Colors.grey[400] ,
-//    offset: Offset(0.5,0.5))
-//
-//    ],
-//    shape: BoxShape.rectangle,
-//    color: Colors.white ,
-//    borderRadius: BorderRadius.all(Radius.circular(5))),
-//    child:Container(
-//    child: Column(
-//    children: <Widget>[
-//=======
+      backgroundColor: background,
+
         body: SingleChildScrollView( 
           child : Container(
       width: MediaQuery.of(context).size.width,
@@ -340,7 +318,7 @@ List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/asses
           itemCount: img.length,
           itemBuilder: (BuildContext ctxt, int index) {
       return Container(
-        height: 280,
+        height: 180,
             width: MediaQuery.of(context).size.width-32,
             margin: EdgeInsets.only(left:32,right: 32,bottom: 32),
             decoration: BoxDecoration(
@@ -366,6 +344,23 @@ child: Column(
          color: Colors.black,
          child: Image.asset(img[index])
         ),
+        Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left: 16,top: 16),
+                alignment: Alignment(-1,0),
+                child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 16,top: 16),
+                alignment: Alignment(-1,0),
+                child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
+              ),
+            ],
+          ),
+        )
         /*ClipPath(
           clipper: BottomWaveClipper(),
           child: Container(
@@ -391,16 +386,7 @@ child: Column(
       alignment: Alignment(-1,0),
       child: Text("@twitter",style: TextStyle(color: Colors.blue),),
     ),*/
-    Container(
-      margin: EdgeInsets.only(left: 16,top: 16),
-      alignment: Alignment(-1,0),
-      child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
-    ),
-    Container(
-      margin: EdgeInsets.only(left: 16,top: 16),
-      alignment: Alignment(-1,0),
-      child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
-    ),
+
     Container(
         margin: EdgeInsets.only(left: 16,top: 16,right: 16),
         child:
@@ -451,6 +437,7 @@ child: Column(
   List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
   Widget DayOne(){
     return Scaffold(
+      backgroundColor: background,
       body:
     Container(
     child:Column(
@@ -515,13 +502,13 @@ Container(
       return Colors.white;
     }
     else if(s=="Design"){
-      return Colors.red;
+      return red;
     }
     else if(s=="Management"){
-      return Colors.green;
+      return green;
     }
     else if(s=="Technical"){
-      return Colors.yellow;
+      return yellow;
     }
   }
 

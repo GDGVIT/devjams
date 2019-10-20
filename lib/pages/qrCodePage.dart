@@ -312,7 +312,9 @@ Container(
 
   Widget DayTwo(){
     return Scaffold(
+      backgroundColor: background,
         body:Container(
+
           height: MediaQuery.of(context).size.height-200,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
@@ -438,7 +440,9 @@ Container(
 int count=0;
   List<Color> colorsDialog=[Colors.yellow[600],Colors.blue,Colors.green,Colors.red];
   Widget DayOne(){
-    return Scaffold(body:SingleChildScrollView(
+    return Scaffold(
+        backgroundColor: background,
+        body:SingleChildScrollView(
 
         child:Container(
       child: Column(

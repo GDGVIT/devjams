@@ -83,6 +83,9 @@ flutter:
     - lib/assests/eight.jpg
     - lib/assests/nine.JPG
     - lib/assests/ten.png
+    - lib/assests/mapa.png
+    - lib/assests/mapb.png
+    - lib/assests/mapc.png
 
     - lib/assests/Abhi.jpg
     - lib/assests/Abhishek.jpg
@@ -100,6 +103,7 @@ flutter:
     - lib/assests/DeepakT.jpg
     - lib/assests/Dhiraj.jpeg
     - lib/assests/Dhruv.jpg
+    - lib/assests/newlogo.png
     - lib/assests/Ekaansh.jpeg
     - lib/assests/Hardik.JPEG
     - lib/assests/Kritika.JPG
@@ -128,6 +132,19 @@ flutter:
     - lib/assests/Vishaal.jpg
     - lib/assests/Vivek.jpg
     - lib/assests/Yaswant.JPG
+    - lib/assests/ATKT.png
+    - lib/assests/Balsamiq.png
+    - lib/assests/CreativeTim.png
+    - lib/assests/Crio.Do.png
+    - lib/assests/Hackerearth.png
+    - lib/assests/Hasura.png
+    - lib/assests/indico.io.png
+    - lib/assests/LBRY.io.png
+    - lib/assests/Overleaf.png
+    - lib/assests/TheSouledStore.png
+    - lib/assests/Zeit.png
+    - lib/assests/Zeplin.png
+    - lib/assests/Zulip.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
