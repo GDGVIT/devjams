@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+2
+version: 1.0.0+4
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -47,13 +47,15 @@ flutter_icons:
   # image_path: "lib/assests/aboutus.png"
   ios: true
   android: true
-  image_path_ios: 'lib/assests/DevJamsLogo.png'
-  image_path_android: 'lib/assests/DevJamsLogo.png'
+  image_path_ios: 'lib/assests/Icon.png'
+  image_path_android: 'lib/assests/Icon.png'
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.7.3"
   http: ^0.12.0+1
   flutter_test:
     sdk: flutter
+
 
 
 # For information on the generic Dart part of this file, see the
@@ -83,9 +85,12 @@ flutter:
     - lib/assests/eight.jpg
     - lib/assests/nine.JPG
     - lib/assests/ten.png
+    - lib/assests/Icon.png
     - lib/assests/mapa.png
     - lib/assests/mapb.png
     - lib/assests/mapc.png
+
+
 
     - lib/assests/Abhi.jpg
     - lib/assests/Abhishek.jpg

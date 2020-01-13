@@ -14,6 +14,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DevJams/models/global.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'dart:math';
 import 'dart:convert';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -71,6 +72,7 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
   void initState() {
     getEmail();
     getToken();
+    getCode();
     super.initState();
     scrollController = new ScrollController();
     scrollController.addListener(() => setState(() {}));
@@ -79,10 +81,12 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
   String token="";
   String email="";
   int currentIndex=0;
+  String code;
 
   SharedPreferencesTest s = new SharedPreferencesTest();
   Future<String> futureToken;
   Future<String> futureEmail;
+  Future<int> futurecode;
   getToken() async{
     futureToken=s.getToken();
     futureToken.then((res){
@@ -91,6 +95,31 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
       });
 
     });}
+  getCode() async{
+    futurecode=s.getCode();
+    futurecode.then((res){
+      if(res==null){
+
+
+          var rng = new Random();
+          int val=rng.nextInt(29);
+
+            s.setcode(val);
+            code=val.toString();
+
+
+
+      }
+      else{
+        setState(() {
+          code=res.toString();
+        });
+
+      }
+      print(code);
+    });
+  }
+
 
   getEmail() async{
     futureEmail=s.getEmail();
@@ -212,6 +241,42 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
 
   @override
   Widget build(BuildContext context) {
+    Widget loadingIndicator =_load? new Container(
+        color: Colors.transparent,
+        height: MediaQuery.of(context).size.height,
+        width:  MediaQuery.of(context).size.width,
+        child:Center( child:
+        Container(
+          height:350,
+          width: 350,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+           color: background
+          ),
+          child: new Padding(padding: const EdgeInsets.all(16.0),child: new Center(child:Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                 Container(
+                     margin:EdgeInsets.only(left:300),
+                     child: new IconButton(icon: Icon(Icons.close,),onPressed: (){
+                       setState(() {
+                         _load=false;
+                       });
+                     },)),
+//                  Padding(padding: EdgeInsets.all(5),),
+                  Container(
+                      padding: EdgeInsets.fromLTRB(40, 16, 16, 0),
+                      alignment:Alignment(-1, 0) ,
+                      child:QrImage(
+                        data: code,
+                        //version: 3,
+                        size: MediaQuery.of(context).size.width/2,
+                      )
+                  )],
+              )
+          ) )),
+        ))):new Container();
 
     var flexibleSpaceWidget = new SliverAppBar(
       backgroundColor: background,
@@ -286,14 +351,14 @@ class _HomePageState extends State<ContactUsPage> with TickerProviderStateMixin 
                         )),
                   ),),
               ),
-
+              loadingIndicator
             ]
         )
     );
   }
 
-List<String> name = ["Samarth Nayyar 🌸","Ayush Priya 🧸","Samyak Jain","Dhiraj Jain","Abhishek Kaushik","Apurva Nitanjay", "Preethi G", "Yaswant Narayan","Paritosh Mahajan","Vikrame Vasudev", "Angad Sharma   🎸", "Ubaid Usmani", "Prateek Mewara","Satkriti Singh", "Amogh Lele", "Nikhil Singh", "Purushottam Sharma","Ananya Ganesh","Riddhi Gupta","Abhishek Kushwaha","Vishaal Selvaraj","Deepak Malpani","Meherdeep Thakur", "Hardik Kataria","Deepak Nahar","Sanchi Chopra","Dhruv Mittal","Vivek Shetty","Akshat Gupta","Shubham Srivastava","Muskan Rastogi","Kritika Sharma","Naynika Wason","Shreya Maheshwari","Saloni Parekh","Manorama Maharana","Arjun Bhanot","Ekaansh Arora", "Riya Kanabar","Ruchica Sinha","Adity Rathore","Shravani Shete"];
-List<String> des = ["Community Lead","Technical Lead", "Technical Lead","Technical Advisor","Android Lead","Projects Lead","PR Lead", "Android","ML", "Web","Backend","ML","Android","Android","Android","Web","Web","Web"," Backend","Backend","Algorithms","ML","Manager","Manager", "Content","Content","Manager","Manager","Manager","Manager","Manager","Manager","Content","Content","Content","Manager","Manager","Manager","UI/UX","Graphic","Graphic","3D & Motion","Graphic"];
+List<String> name = ["Samarth Nayyar 🌸","Ayush Priya 🧸","Samyak Jain","Dhiraj Jain","Abhishek Kaushik","Apurva Nitanjay", "Preethi G", "Yaswant Narayan","Paritosh Mahajan","Vikrame Vasudev", "Angad Sharma   🎸", "Ubaid Usmani", "Prateek Mewara","Satkriti Singh", "Amogh Lele", "Nikhil Singh", "Purushottam Sharma","Aananya Ganesh","Riddhi Gupta","Abhishek Kushwaha","Vishaal Selvaraj","Deepak Malpani","Meherdeep Thakur", "Hardik Kataria","Deepak Nahar","Sanchi Chopra","Dhruv Mittal","Vivek Shetty","Akshat Gupta","Shubham Srivastava","Muskan Rastogi","Kritika Sharma","Naynika Wason","Shreya Maheshwari","Saloni Parekh","Manorama Maharana","Arjun Bhanot","Ekaansh Arora", "Riya Kanabar","Ruchica Sinha","Adity Rathore","Shravani Shete"];
+List<String> des = ["Community Lead","Technical Lead", "Technical Lead","Technical Advisor","Android Lead","Projects Lead","PR Lead", "Android","ML", "Web","Backend","ML","Android","Android","Android","Web","Web","Web"," Backend","Backend","Algorithms","ML","Manager","Manager", "Content","Content 🖨","Manager","Manager","Manager","Manager","Manager","Manager","Content","Content","Content","Manager","Manager","Manager","UI/UX","Graphic","Graphic","3D & Motion","Graphic"];
 List<String> field = ["Design", "Technical","Technical","Technical","Technical","Technical","Management","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Technical","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management","Management", "Design","Design", "Design", "Design", "Design"];
 List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/assests/Samyak.jpg","lib/assests/Dhiraj.jpeg","lib/assests/Abhishek.jpg","lib/assests/Apoorva.jpg","lib/assests/preethi.JPG"
 ,"lib/assests/Yaswant.JPG","lib/assests/Paritosh.jpg","lib/assests/Vikrame.jpg","lib/assests/Angad.jpeg","lib/assests/Ubaid.jpg","lib/assests/Prateek.png","lib/assests/Satkriti.jpg","lib/assests/Amogh.jpg","lib/assests/Nikhil.jpeg","lib/assests/Purushottam.jpeg","lib/assests/Ananya.jpg","lib/assests/Riddhi.JPG","lib/assests/Abhi.jpg","lib/assests/Vishaal.jpg","lib/assests/DeepakT.jpg"
@@ -316,6 +381,10 @@ List<String> img = ["lib/assests/Samarth.jpg","lib/assests/Ayush.jpg","lib/asses
 
             if(index==10){
               sendToServer("Music Jam","Enjoy being happy everyday! Hopefully you can hear our happiness in the music.");
+            }
+            if(index==25){
+              sendToServer("Printer","FAT is here! Stay away from jamming your printers.");
+
             }
       },
           child:Container(
@@ -353,11 +422,19 @@ child: Column(
                 alignment: Alignment(-1,0),
                 child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
               ),
-              Container(
+             GestureDetector(
+                 onTap: () {
+                   if (index == 25) {
+                     sendToServer("Printer JAM",
+                         "FAT is here! Stay away from jamming your printers.");
+                   }
+
+                 },
+                 child: Container(
                 margin: EdgeInsets.only(left: 16,top: 16),
                 alignment: Alignment(-1,0),
                 child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
-              ),
+              )),
             ],
           ),
         )
@@ -448,7 +525,13 @@ child: Column(
           alignment:Alignment(-1, 0) ,
           child: Text("QR Code",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
         ),
-
+GestureDetector(
+    onTap: (){
+      setState(() {
+        _load=true;
+      });
+    },
+    child:
         Container(
             padding: EdgeInsets.fromLTRB(40, 16, 16, 0),
             alignment:Alignment(-1, 0) ,
@@ -457,7 +540,7 @@ child: Column(
           //version: 3,
           size: 200.0,
         )
-        ),
+        )),
 GestureDetector(
   onTap: (){
 
@@ -489,7 +572,7 @@ Container(
 
   Map<String , dynamic> body={
     "name":"",
-    "des":""
+    "description":""
   };
   sendToServer(String name,String des){
 
@@ -499,7 +582,7 @@ Container(
 
 
     body["name"]='$name';
-    body["des"]='$des';
+    body["description"]='$des';
 
     Future fetchPosts(http.Client client) async {
       print("yjhtgfdsyutrgds");
@@ -521,32 +604,32 @@ Container(
               textColor: Colors.white);
         }
         else if(data["err"] == "Not found"){
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
         }
         else {
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
         }
       }
       else {
-        Fluttertoast.showToast(
-            msg: "Try Again",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIos: 1,
-            backgroundColor: Colors.grey[700],
-            textColor: Colors.white);
+//        Fluttertoast.showToast(
+//            msg: "Try Again",
+//            toastLength: Toast.LENGTH_SHORT,
+//            gravity: ToastGravity.BOTTOM,
+//            timeInSecForIos: 1,
+//            backgroundColor: Colors.grey[700],
+//            textColor: Colors.white);
       }
     }
 

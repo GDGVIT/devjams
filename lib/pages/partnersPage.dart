@@ -191,10 +191,10 @@ getToken();
 
 }
 List<String> time = ["10:00 pm - 12:00 am","11:30 am - 12:00 pm","12:30 pm - 1:00 pm","11:10 pm - 12:00 am","10:00 pm - 10:35 pm","Shashank Barki", "10:35 pm - 11:10 pm", "10:00pm to 10:45 pm","11:00 am -11:30 am"];
-  List<String> gallary = ["Gallary 2","Gallary 1","Gallary 1","Gallary 1","Gallary 1","Gallary 2", "Gallary 1", "Gallary 2","Gallary 1","Gallary 2"];
+  List<String> gallary = ["Gallery 2","Gallery 1","Gallery 1","Gallery 1","Gallery 1","Gallery 2", "Gallery 1", "Gallery 2","Gallery 1","Gallery 2"];
 
   List<String> name = ["Sachin Kumar","Nikita Gandhi","Dinesh Shanmugan C","Rohan Mishra","Thiyagaraj T","Shashank Barki", "Ananya", "Ashwini Purohit","Ajay Ravindra"];
-List<String> des = ["From chatbots, Voice to building immersive Visual games for Google Assistant","Making handsome deals with ML","Building Android Apps at Scale","The 180 degree shift - from Engineering to Design","Building Your Developer Roadmap","Quicken your Cloud Journey using Qwiklabs", "Getting most out of Developer Communities","Building a startup as a college student","Succeeding in Software","Automation of Android and iOS builds and publishing them to app stores"];
+List<String> des = ["From chatbots, Voice to building immersive Visual games for Google Assistant","Making handsome deals with ML ⚙","Building Android Apps at Scale","The 180 degree shift - from Engineering to Design","Building Your Developer Roadmap","Quicken your Cloud Journey using Qwiklabs", "Getting most out of Developer Communities","Building a startup as a college student","Succeeding in Software","Automation of Android and iOS builds and publishing them to app stores"];
 List<String> company = ["Google Developers Expert", "Google","RedBus","Zomato","Kubric","Manhattan Associates", "WTM","Winuall.com","Crio.Do","Atlassian"];
 List<String> img = ["lib/assests/one.png","lib/assests/two.png","lib/assests/three.jpg","lib/assests/four.jpg","lib/assests/five.png","lib/assests/six.JPG","lib/assests/seven.jpeg","lib/assests/eight.jpg","lib/assests/nine.JPG","lib/assests/ten.png"];
 
@@ -259,12 +259,20 @@ child: Column(
       margin: EdgeInsets.only(left: 16,top: 16),
       alignment: Alignment(-1,0),
       child: Text(name[index],style: TextStyle(fontWeight: FontWeight.w500,fontSize:18),),
-    ),
-    Container(
+    )
+    ,
+    GestureDetector(
+        onTap: (){
+
+          if(index==1){
+            sendToServer("Cogs-Jam","Tune in to break the cogged-jam!");
+          }
+        },
+        child:Container(
       margin: EdgeInsets.only(left: 16,top: 16),
       alignment: Alignment(-1,0),
       child: Text(des[index],style: TextStyle(fontWeight: FontWeight.w400,fontSize:14),),
-    ),
+    )),
     Container(
         margin: EdgeInsets.only(left: 16,top: 16,right: 16),
         child:
@@ -598,13 +606,13 @@ Widget CollaboratorsPage(){
 
   Map<String , dynamic> body={
     "name":"",
-    "des":""
+    "description":""
   };
   sendToServer(String name,String des){
 
 
     body["name"]='$name';
-    body["des"]='$des';
+    body["description"]='$des';
 
     Future fetchPosts(http.Client client) async {
       print("yjhtgfdsyutrgds");
@@ -634,22 +642,22 @@ Widget CollaboratorsPage(){
 //            _load=false;
 //          });
 //          s.setLogincheck('false');
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
         }
         else {
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
 //          print(data);
 //          setState(() {
 //            _load = false;
@@ -661,13 +669,13 @@ Widget CollaboratorsPage(){
       }
       else {
 
-        Fluttertoast.showToast(
-            msg: "Try Again",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIos: 1,
-            backgroundColor: Colors.grey[700],
-            textColor: Colors.white);
+//        Fluttertoast.showToast(
+//            msg: "Try Again",
+//            toastLength: Toast.LENGTH_SHORT,
+//            gravity: ToastGravity.BOTTOM,
+//            timeInSecForIos: 1,
+//            backgroundColor: Colors.grey[700],
+//            textColor: Colors.white);
       }
     }
 

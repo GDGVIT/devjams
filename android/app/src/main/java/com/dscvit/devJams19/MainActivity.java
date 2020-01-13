@@ -1,4 +1,4 @@
-package com.dscvit.devjams;
+package com.dscvit.devjams19;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

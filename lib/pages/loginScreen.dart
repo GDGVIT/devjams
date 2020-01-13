@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget FormUI() {
 
     Widget loadingIndicator =_load? new Container(
-        color: Colors.white,
+        color: background,
         height: MediaQuery.of(context).size.height,
         width:  MediaQuery.of(context).size.width,
         child: Center( child:
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ))):new Container();
 
     return  Scaffold(
-
+backgroundColor: background,
     body:Stack(
       children: <Widget>[
 
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         height: MediaQuery.of(context).size.height-60,
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(16.0),
-        color:white,
+        color:background,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,11 +141,15 @@ Text("By",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 21),),
                             style: TextStyle(color: Colors.blue,fontFamily: 'Raleway'),
                             cursorColor: Theme.of(context).primaryColor,
                             decoration: const InputDecoration(
+
                                 border: OutlineInputBorder(),
                                 hintText: 'Password',
-                                labelText: 'Password'
+                                labelText: 'Password',
+
+
                             ),
                             validator: validateEM,
+                            obscureText: true,
                             onSaved: (String val) {
                               password = val.trim();
 //                              print("Code"+code);

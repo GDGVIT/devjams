@@ -122,7 +122,30 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         child : Scaffold(
           backgroundColor: background,
           body:_widgetOptions[_selectedIndex],
-          bottomNavigationBar: 
+          bottomNavigationBar:
+//          BottomNavigationBar(
+//            items: const <BottomNavigationBarItem>[
+//              BottomNavigationBarItem(
+//                icon:Icon(MyFlutterApp.home,color: unselected,),
+////                title: Text('Home'),
+//              ),
+//              BottomNavigationBarItem(
+//               icon:Icon(MyFlutterApp.info_outline,color: unselected,),
+////                title: Text('Business'),
+//              ),
+//              BottomNavigationBarItem(
+//                icon:Icon(MyFlutterApp.medal,color: unselected,),
+////                title: Text('School'),
+//              ),
+//              BottomNavigationBarItem(
+//                icon:Icon(MyFlutterApp.user,color: unselected,),
+////                title: Text('School'),
+//              ),
+//            ],
+//            currentIndex: _selectedIndex,
+//            selectedItemColor: red,
+//            onTap: _onItemTapped,
+//          ),
             BottomNavigationBar(
               items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(icon:Icon(MyFlutterApp.home,color: unselected,), activeIcon: Icon(MyFlutterApp.home,color:red,)),

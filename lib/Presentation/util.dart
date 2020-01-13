@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Color background=Color(0xFFf2f2f2);//c8c8c8//f2f2f2
-Color unselected=Color(0xFFc8c8c8);
+const Color unselected=Color(0xFFc8c8c8);
 Color white=Colors.white;//bottombi
 Color yellow=Color(0xFFf4c644);//f4c644
 Color blue=Color(0xFF629af0);//629af0

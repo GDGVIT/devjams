@@ -9,9 +9,11 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:DevJams/models/global.dart';
+import 'package:DevJams/models/leaderBoard.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 import 'package:DevJams/pages/introductoryPage.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
@@ -68,6 +70,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void initState() {
     getEmail();
     getToken();
+    getCode();
+    check="";
     super.initState();
     scrollController = new ScrollController();
     scrollController.addListener(() => setState(() {}));
@@ -75,8 +79,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
 String token="";
 String email="";
+int numb=0;
+int numc=0;
 int currentIndex=0;
-  
+
 SharedPreferencesTest s = new SharedPreferencesTest();
 Future<String> futureToken;
 Future<String> futureEmail;
@@ -109,8 +115,35 @@ getToken() async{
     });
   }
 
+  Future<int> futurecode;
 
-Widget bullet(){
+    String code="";
+  getCode() async{
+    futurecode=s.getCode();
+    futurecode.then((res){
+      if(res==null){
+
+
+        var rng = new Random();
+        int val=rng.nextInt(29);
+
+        s.setcode(val);
+        code=val.toString();
+
+
+
+      }
+      else{
+        setState(() {
+          code=res.toString();
+        });
+
+      }
+      print(code);
+    });
+  }
+
+  Widget bullet(){
     return new Container(
       height: 10.0,
       width: 10.0,
@@ -206,6 +239,8 @@ List<CustomPopupMenu> choices = <CustomPopupMenu>[
 
 
   bool _load = false;
+
+ String check="";
 
   @override
   Widget build(BuildContext context) {
@@ -330,14 +365,90 @@ scrollDirection: Axis.horizontal,
      Row(
        mainAxisAlignment: MainAxisAlignment.center,
        children: <Widget>[
-         Container(
+         Stack(
+             children: <Widget>[
+               Container(
 
-           child: Image.asset(map[0]),),
-         Container(
+                 child: Image.asset(map[0]),),
+               Positioned(
+                   right: MediaQuery.of(context).size.width/4,
+                   bottom:MediaQuery.of(context).size.height/3 ,
+                   child:
+                   GestureDetector(
 
-           child: Image.asset(map[1]),), Container(
+                       onTap: (){
+                         check=check+"1";
+                         print(check);
 
-           child: Image.asset(map[2]),)
+                       },
+                       child:  Container(
+                           height:80,
+                           width:150,
+                           color:Colors.transparent
+
+                       ))),
+
+             ]
+         ),
+
+
+
+         Stack(
+             children: <Widget>[
+               Container(
+
+                 child: Image.asset(map[1]),),
+             Positioned(
+                 right: MediaQuery.of(context).size.width/6,
+                 bottom:MediaQuery.of(context).size.height/4 ,
+                 child:
+             GestureDetector(
+                 onTap: (){
+                   check=check+"2";
+                   print(check);
+
+                 },
+                 onDoubleTap: (){
+                   sendToServer("JAMun", "Battle of jams! Make it through.");
+                 },
+                 child:  Container(
+                 height:50,
+                 width:50,
+               color:Colors.transparent
+
+               ))),
+
+             ]
+         )
+         , Stack(
+             children: <Widget>[
+               Container(
+
+                 child: Image.asset(map[2]),),
+               Positioned(
+                   left: MediaQuery.of(context).size.width/25,
+                   top:MediaQuery.of(context).size.height/20 ,
+                   child:
+                   GestureDetector(
+                       onTap: (){
+                         check=check+"3";
+                         print(check);
+                         if(check=="123"){
+                           sendToServer("Path Jams","You really know your ways to achieve something.");
+                         }
+                       },
+                       onLongPress: (){
+                         sendToServer("JAM packed", "No space to breathe! Isn't it jam-packed?");
+                       },
+                       child:  Container(
+                           height:100,
+                           width:200,
+                           color:Colors.transparent
+
+                       ))),
+
+             ]
+         )
        ],
      )
 
@@ -361,10 +472,10 @@ scrollDirection: Axis.horizontal,
         )
     );
   }
-  List<String> data=["Registraion","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
+  List<String> data=["Registration","Inaugration","Dinner","Speaker","Speaker","Hack begins","Snacks","Break","Review 1","Speaker","Lunch","Hack","Snacks","Review 2","Hack","Dinner","Hack","Snacks","Pitch","Prize Distribution"];
   List<String> time=["7:00 - 8:00 pm","8:00 - 9:00 pm","9:00 - 10:00 pm ","10:00 - 11:00 pm","11:00 - 12:00 am","12:00 - 3:30 am","3:30 - 4:00 am","8:00 - 8:30 am","9:00 - 10:30 am","11:00 - 1:00 pm","1:00 - 3:00 pm","3:00 - 5:00 pm","5:00 - 5:30 pm","5:30 - 9:00 pm","7:00 - 9:00 pm","9:00 - 10:00 pm","10:00 - 1:00 am","1:00 - 1:30 am","2:00 - 5:00 am","5:00 - 6:00 am"];
 
-
+int numa=0;
 
   List<Color> colorsDialog=[yellow,blue,green,red];
   Widget DayOne(){
@@ -401,7 +512,20 @@ color: background,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
 
-                                Container(
+                               GestureDetector(
+                                   onTap: (){
+                                     setState(() {
+                                       numa=(numa+1)%10;
+                                     });
+                                     if((numa+numb+numc).toString()==code){
+                                       sendToServer("CodeJam", "Detective  Mind is still ON.");
+                                     }
+                                     else if((numa+numb+numc).toString()=="7"){
+                                       sendToServer("James Bond II", "This was good one.");
+
+                                     }
+                                   },
+                                   child: Container(
                                     height:40,
                                     width: 40,
 //                              height: 20,
@@ -411,8 +535,8 @@ color: background,
                                       color:clr,
                                     ),
 
-                                    child:Text("  ")
-                                ),
+                                    child:Center(child:Text(numa==0?" ":numa.toString(),style: TextStyle(color: Colors.white),))
+                                )),
                                 Container(
                                   width: 3,
                                   height: 81,
@@ -586,8 +710,10 @@ color: background,
 
                   child:GestureDetector(
                   onTap: (){
-//                    sendToServer("Jim Jam",)
-                    
+
+                   if(index==6) {
+                     sendToServer("Jim Jam","Makers of JimJams and DevJams ! Hmm hmm");
+                   }
               },
                   child: Container(
                     height: 120,
@@ -600,8 +726,36 @@ color: background,
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          GestureDetector(
+                            onTap: (){
+                              if(index==1) {
+                                setState(() {
+                                  numb = (numb + 1)%10;
+                                });
+                                if((numa+numb+numc).toString()==code){
+                                  sendToServer("CodeJam", "Detective  Mind is still ON.");
+                                }
+                                else if((numa+numb+numc).toString()=="7"){
+                                  sendToServer("James Bond II", "This was good one.");
 
-                          Container(
+                                }
+                              }
+                              else if(index==2){
+                                setState(() {
+                                  numc = (numc + 1)%10;
+                                });
+                                if((numa+numb+numc).toString()==code){
+                                  sendToServer("CodeJam", "Detective  Mind is still ON.");
+                                }
+                                else if((numa+numb+numc).toString()=="7"){
+                                  sendToServer("James Bond II", "This was good one.");
+
+                                }
+                              }
+
+                            },
+                            child:
+                            Container(
                               height:40,
                               width: 40,
 //                              height: 20,
@@ -611,7 +765,9 @@ color: background,
                                 color:clr,
                               ),
 
-                              child:Text("  ")
+                                child:Center(child:index==1?Text(numb==0?" ":numb.toString(),style: TextStyle(color: Colors.white),):index==2?Text(numc==0?" ":numc.toString(),style: TextStyle(color: Colors.white),):Text(" ",style: TextStyle(color: Colors.white),))
+
+                          ),
                           ),
                           Container(
                             width: 3,
@@ -658,17 +814,17 @@ color: background,
 
  Map<String , dynamic> body={
    "name":"",
-   "des":""
+   "description":""
  };
   sendToServer(String name,String des){
 
-    setState(() {
-      _load=true;
-    });
+//    setState(() {
+//      _load=true;
+//    });
 
 
     body["name"]='$name';
-    body["des"]='$des';
+    body["description"]='$des';
 
     Future fetchPosts(http.Client client) async {
       print("yjhtgfdsyutrgds");
@@ -681,10 +837,7 @@ color: background,
         final data = json.decode(response.body);
         if (data["email"] == email)
         {
-//          setState(() {
-//            _load=false;
-//          });
-//          s.setLogincheck('false');
+
           Fluttertoast.showToast(
               msg: "Congratulation",
               toastLength: Toast.LENGTH_SHORT,
@@ -698,22 +851,22 @@ color: background,
 //            _load=false;
 //          });
 //          s.setLogincheck('false');
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
         }
         else {
-          Fluttertoast.showToast(
-              msg: "Try Again",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 1,
-              backgroundColor: Colors.grey[700],
-              textColor: Colors.white);
+//          Fluttertoast.showToast(
+//              msg: "Try Again",
+//              toastLength: Toast.LENGTH_SHORT,
+//              gravity: ToastGravity.BOTTOM,
+//              timeInSecForIos: 1,
+//              backgroundColor: Colors.grey[700],
+//              textColor: Colors.white);
 //          print(data);
 //          setState(() {
 //            _load = false;
@@ -724,16 +877,16 @@ color: background,
         }
       }
       else {
-        setState(() {
-          _load=false;
-        });
-        Fluttertoast.showToast(
-            msg: "Sorry, Server Error",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIos: 1,
-            backgroundColor: Colors.grey[700],
-            textColor: Colors.white);
+//        setState(() {
+//          _load=false;
+//        });
+//        Fluttertoast.showToast(
+//            msg: "Try Again",
+//            toastLength: Toast.LENGTH_SHORT,
+//            gravity: ToastGravity.BOTTOM,
+//            timeInSecForIos: 1,
+//            backgroundColor: Colors.grey[700],
+//            textColor: Colors.white);
       }
     }
 

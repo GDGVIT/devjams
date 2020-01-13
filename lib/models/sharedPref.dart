@@ -86,7 +86,19 @@ class SharedPreferencesTest {
    String value = prefs.getString(key);
    return value;
  }
+ setcode(int value) async {
+   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
+   final key = 'code';
+   prefs.setInt(key, value);
+ }
+ Future<int>  getCode() async {
+   final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+   final key = 'code';
+   int value = prefs.getInt(key);
+   return value;
+ }
  setToken(String value) async {
    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
